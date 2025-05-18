@@ -1,0 +1,20 @@
+# 数据文件(通常很大)
+01_Data/raw/
+01_Data/processed/
+
+# Python缓存
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 临时文件
+*.swp
+*.swo
+.DS_Store
+
+# Jupyter缓存
+.ipynb_checkpoints/
+
+# 敏感信息
+*.env
+

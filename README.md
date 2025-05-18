@@ -1,76 +1,41 @@
-WindForecast_Project/
-├── 01_Data/
-│   ├── raw/                      # 原始数据
-│   │   ├── obs/                  # 观测数据
-│   │   │   ├── changma/          # 昌马测风塔数据
-│   │   │   ├── sanlijijingzi/    # 三十里井子测风塔数据
-│   │   │   └── kuangqu/          # 矿区测风塔数据
-│   │   └── wrf/                  # WRF模拟输出
-│   │       ├── gfs_driven/       # GFS驱动的WRF输出
-│   │       └── ec_driven/        # EC驱动的WRF输出
-│   ├── processed/                # 处理后的数据
-│   │   ├── aligned/              # 时间对齐后的数据
-│   │   ├── cleaned/              # 清洗后的数据
-│   │   └── features/             # 提取的物理特征
-│   └── metadata/                 # 数据描述文件
-│       └── data_inventory.xlsx   # 数据清单
-│
-├── 02_Code/
-│   ├── preprocessing/            # 数据预处理脚本
-│   │   ├── data_loading.py
-│   │   ├── quality_control.py
-│   │   └── feature_extraction.py
-│   ├── analysis/                 # 分析脚本
-│   │   ├── stability_analysis.py
-│   │   ├── time_scale_analysis.py
-│   │   ├── error_decomposition.py
-│   │   └── case_analysis.py
-│   ├── ml_methods/               # 机器学习方法
-│   │   ├── clustering.py
-│   │   ├── shap_analysis.py
-│   │   └── prediction_model.py
-│   ├── visualization/            # 可视化脚本
-│   │   ├── time_series_plots.py
-│   │   ├── profile_plots.py
-│   │   └── contribution_plots.py
-│   └── utils/                    # 工具函数
-│       ├── metrics.py
-│       └── helpers.py
-│
-├── 03_Results/
-│   ├── figures/                  # 图表结果
-│   │   ├── exploratory/          # 探索性分析图表
-│   │   ├── stability/            # 稳定度分析图表
-│   │   ├── time_scales/          # 时间尺度分析图表
-│   │   ├── error_analysis/       # 误差分析图表
-│   │   ├── ml_results/           # 机器学习结果图表
-│   │   └── paper_figures/        # 论文用高质量图表
-│   ├── tables/                   # 表格结果
-│   ├── models/                   # 训练的模型
-│   └── case_studies/             # 案例研究结果
-│
-├── 04_Literature/
-│   ├── papers/                   # 论文PDF
-│   ├── notes/                    # 文献笔记
-│   └── references.bib            # BibTeX参考文献文件
-│
-├── 05_Manuscript/
-│   ├── drafts/                   # 论文草稿
-│   ├── figures/                  # 最终论文图表
-│   ├── submissions/              # 投稿版本
-│   ├── reviews/                  # 审稿意见
-│   └── final/                    # 最终稿件
-│
-├── 06_Presentations/
-│   ├── progress/                 # 进展汇报
-│   └── conference/               # 会议报告
-│
-├── 07_Documentation/
-│   ├── research_log.md           # 研究日志
-│   ├── meeting_notes/            # 会议记录
-│   ├── workflows/                # 工作流程文档
-│   └── data_descriptions/        # 数据说明文档
-│
-├── environment.yml               # Conda环境配置
-├── README.md                     # 项目说明
-└── .gitignore                    # Git忽略配置
+# 风电场风速预报中 GFS 与 EC 数据源对比分析
+
+## 项目概述
+
+本研究对比分析了 GFS 与 EC 数据源对风电场风速预报的影响差异，通过多维度物理过程分析与可解释机器学习方法，识别不同物理条件下两种数据源的表现差异及其物理机制，为风电场预报提供基于物理条件的最优数据源选择策略。
+
+## 研究目标
+
+- 系统对比 GFS 和 EC 数据源对风电场风速预报的影响差异
+- 分析不同物理条件下（如稳定度、边界层结构）两种数据源的性能差异
+- 量化关键物理过程对预报误差的贡献
+- 建立基于物理条件的最优数据源选择策略
+
+## 数据说明
+
+研究使用三个测风塔的观测数据和 WRF 模拟输出：
+
+### 观测数据
+- **昌马测风塔**：10m 温度数据和 10m、30m、50m、70m 风速数据
+- **三十里井子测风塔**：风速标准差和多层平均风速
+- **矿区测风塔**：多层风速数据
+
+### 数值模拟数据
+- **GFS 驱动的 WRF 输出**：近地层多层次的温度、风速等数据
+- **EC 驱动的 WRF 输出**：近地层多层次的温度、风速等数据
+
+## 方法论
+
+本研究采用传统物理过程分析与可解释机器学习相结合的方法进行多维度分析：
+
+1. **物理过程分析**
+   - 大气稳定度与边界层结构分析
+   - 多时间尺度变化特征分析
+   - 误差组分分解与物理过程关联
+
+2. **机器学习辅助分析**
+   - 聚类分析识别关键物理条件
+   - SHAP 值评估物理因素贡献
+   - EOF/PCA 分析风剖面结构特征
+
+## 项目结构

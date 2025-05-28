@@ -1,0 +1,41 @@
+=== 1.2.2 Observation Variables Correlation Analysis Report ===
+Analysis time: 2025-05-28 17:16:18
+Variables analyzed: 16
+Valid samples: 52317
+
+【Variable Categories】
+Wind speed variables: 4
+Wind direction variables: 4 (converted to 8 sin/cos components)
+Temperature variables: 1
+Humidity variables: 1
+Density variables: 1
+Power variables: 1
+
+【Wind Direction Processing】
+Wind direction variables converted to sin/cos components:
+  10m: obs_wind_dir_sin_10m, obs_wind_dir_cos_10m
+  30m: obs_wind_dir_sin_30m, obs_wind_dir_cos_30m
+  50m: obs_wind_dir_sin_50m, obs_wind_dir_cos_50m
+  70m: obs_wind_dir_sin_70m, obs_wind_dir_cos_70m
+
+【Power Correlation Analysis (Spearman)】
+Top 5 variables most correlated with power:
+  1. obs_wind_speed_10m: 0.828*** (p=0.000e+00)
+  2. obs_wind_speed_50m: 0.789*** (p=0.000e+00)
+  3. obs_wind_speed_70m: 0.789*** (p=0.000e+00)
+  4. obs_wind_speed_30m: 0.781*** (p=0.000e+00)
+  5. obs_wind_dir_cos_30m: 0.205*** (p=0.000e+00)
+
+【Significance Testing】
+Significance levels:
+  *** p < 0.001 (highly significant)
+  **  p < 0.01  (very significant)
+  *   p < 0.05  (significant)
+  ns  p ≥ 0.05  (not significant)
+
+【Analysis Notes】
+1. Only observation variables (obs_*) and power data were included
+2. Forecast data (ec_*, gfs_*) were excluded from analysis
+4. Missing values were removed before correlation calculation
+5. Spearman correlation used for power analysis due to non-linear relationships
+6. All correlations tested for statistical significance

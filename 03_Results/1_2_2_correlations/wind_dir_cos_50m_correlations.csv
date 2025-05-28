@@ -1,0 +1,15 @@
+target_variable,target_variable_name,correlated_variable,abs_spearman_correlation,spearman_correlation,p_value,significance
+obs_wind_dir_cos_50m,Wind Dir Cos (50m),obs_wind_dir_cos_70m,0.9644226354386203,0.9644226354386203,0.0,***
+obs_wind_dir_cos_50m,Wind Dir Cos (50m),obs_wind_dir_cos_30m,0.4284673703183026,0.4284673703183026,0.0,***
+obs_wind_dir_cos_50m,Wind Dir Cos (50m),obs_wind_dir_cos_10m,0.4030175876239274,0.4030175876239274,0.0,***
+obs_wind_dir_cos_50m,Wind Dir Cos (50m),obs_wind_speed_70m,0.16971706524730992,-0.16971706524730992,0.0,***
+obs_wind_dir_cos_50m,Wind Dir Cos (50m),obs_wind_dir_sin_50m,0.16940528809859431,0.16940528809859431,0.0,***
+obs_wind_dir_cos_50m,Wind Dir Cos (50m),obs_wind_speed_50m,0.16389108165939092,-0.16389108165939092,0.0,***
+obs_wind_dir_cos_50m,Wind Dir Cos (50m),obs_wind_dir_sin_70m,0.1289714968080387,-0.1289714968080387,7.642952057790355e-193,***
+obs_wind_dir_cos_50m,Wind Dir Cos (50m),obs_wind_speed_30m,0.12004401363010206,-0.12004401363010206,3.688651540116518e-167,***
+obs_wind_dir_cos_50m,Wind Dir Cos (50m),obs_temperature_10m,0.11638923552777795,0.11638923552777795,3.4337954685118905e-157,***
+obs_wind_dir_cos_50m,Wind Dir Cos (50m),obs_wind_dir_sin_30m,0.10325313125570548,-0.10325313125570548,5.8314457828598396e-124,***
+obs_wind_dir_cos_50m,Wind Dir Cos (50m),obs_wind_speed_10m,0.0443756914244741,-0.0443756914244741,3.1554876498225695e-24,***
+obs_wind_dir_cos_50m,Wind Dir Cos (50m),obs_density_10m,0.010147065883315457,0.010147065883315457,0.020290432586901372,*
+obs_wind_dir_cos_50m,Wind Dir Cos (50m),obs_wind_dir_sin_10m,0.004533771518203614,-0.004533771518203614,0.29974237304041074,ns
+obs_wind_dir_cos_50m,Wind Dir Cos (50m),obs_humidity_10m,0.00019982333742838614,-0.00019982333742838614,0.963545920528124,ns

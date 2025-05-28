@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wind Direction Angle and Trigonometric Components</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .explanation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        .compass-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 400px;
+        }
+        .compass {
+            width: 300px;
+            height: 300px;
+            border: 4px solid white;
+            border-radius: 50%;
+            position: relative;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+        }
+        .compass-direction {
+            position: absolute;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .north { top: -10px; left: 50%; transform: translateX(-50%); }
+        .south { bottom: -10px; left: 50%; transform: translateX(-50%); }
+        .east { right: -15px; top: 50%; transform: translateY(-50%); }
+        .west { left: -15px; top: 50%; transform: translateY(-50%); }
+        
+        .axis {
+            position: absolute;
+            background: white;
+        }
+        .x-axis {
+            width: 100%;
+            height: 2px;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%);
+        }
+        .y-axis {
+            width: 2px;
+            height: 100%;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+        
+        .vector {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform-origin: 0 0;
+            width: 120px;
+            height: 3px;
+            background: #ff6b6b;
+            transition: all 0.3s ease;
+        }
+        
+        .vector::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: -5px;
+            width: 0;
+            height: 0;
+            border-left: 12px solid #ff6b6b;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+        }
+        
+        .controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .angle-slider {
+            width: 300px;
+            margin: 10px;
+            height: 8px;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.3);
+            outline: none;
+            appearance: none;
+        }
+        
+        .angle-slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #ff6b6b;
+            cursor: pointer;
+        }
+        
+        .values-panel {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .value-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            font-size: 1.2em;
+        }
+        
+        .value-label {
+            font-weight: bold;
+        }
+        
+        .value-number {
+            font-family: 'Courier New', monospace;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 8px;
+        }
+        
+        .explanation-text {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            line-height: 1.6;
+        }
+        
+        .highlight {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        
+        .examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .example-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .example-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .formula-box {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            border-left: 4px solid #ff6b6b;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .comparison-table th {
+            background: rgba(255, 255, 255, 0.2);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧭 Wind Direction Angles & Trigonometric Components</h1>
+        
+        <div class="explanation-grid">
+            <div class="compass-container">
+                <div class="compass">
+                    <div class="compass-direction north">N (0°)</div>
+                    <div class="compass-direction south">S (180°)</div>
+                    <div class="compass-direction east">E (90°)</div>
+                    <div class="compass-direction west">W (270°)</div>
+                    
+                    <div class="axis x-axis"></div>
+                    <div class="axis y-axis"></div>
+                    
+                    <div class="vector" id="wind-vector"></div>
+                </div>
+            </div>
+            
+            <div class="values-panel">
+                <h3 style="text-align: center; margin-bottom: 20px;">Real-time Calculations</h3>
+                
+                <div class="controls">
+                    <label for="angle-slider">Wind Direction:</label>
+                    <input type="range" id="angle-slider" class="angle-slider" 
+                           min="0" max="360" value="45" step="1">
+                </div>
+                
+                <div class="value-row">
+                    <span class="value-label">Angle (θ):</span>
+                    <span class="value-number" id="angle-value">45°</span>
+                </div>
+                
+                <div class="value-row">
+                    <span class="value-label">cos(90°-θ) - E-W:</span>
+                    <span class="value-number" id="cos-value">0.707</span>
+                </div>
+                
+                <div class="value-row">
+                    <span class="value-label">sin(90°-θ) - N-S:</span>
+                    <span class="value-number" id="sin-value">0.707</span>
+                </div>
+                
+                <div class="value-row">
+                    <span class="value-label">Direction:</span>
+                    <span class="value-number" id="direction-desc">Northeast</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="explanation-text">
+            <h3>🔍 Why This Transformation?</h3>
+            <p><span class="highlight">Problem</span>: Wind direction is circular data. 0° and 360° represent the same direction (North), but numerically they appear very different. Direct correlation analysis would produce incorrect results.</p>
+            
+            <p><span class="highlight">Solution</span>: Convert meteorological angles to Cartesian coordinates:</p>
+            <div class="formula-box">
+                Mathematical Angle = (90° - Meteorological Angle + 360°) % 360°<br>
+                <strong>cos(Mathematical Angle)</strong> → X-component → <span class="highlight">East-West</span> (positive = East, negative = West)<br>
+                <strong>sin(Mathematical Angle)</strong> → Y-component → <span class="highlight">North-South</span> (positive = North, negative = South)
+            </div>
+        </div>
+        
+        <div class="explanation-text">
+            <h3>⚙️ Two Coordinate Systems</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>System</th>
+                        <th>0° Direction</th>
+                        <th>90° Direction</th>
+                        <th>Rotation</th>
+                        <th>Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Meteorological</strong></td>
+                        <td>North (↑)</td>
+                        <td>East (→)</td>
+                        <td>Clockwise</td>
+                        <td>Weather, Aviation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Mathematical</strong></td>
+                        <td>East (→)</td>
+                        <td>North (↑)</td>
+                        <td>Counter-clockwise</td>
+                        <td>Trigonometry, Physics</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="explanation-text">
+            <h3>📐 Typical Wind Direction Examples</h3>
+            <div class="examples">
+                <div class="example-card" onclick="setAngle(0)">
+                    <h4>North Wind (0°)</h4>
+                    <p>cos(90°) = 0.0 (No E-W)</p>
+                    <p>sin(90°) = 1.0 (North)</p>
+                </div>
+                <div class="example-card" onclick="setAngle(90)">
+                    <h4>East Wind (90°)</h4>
+                    <p>cos(0°) = 1.0 (East)</p>
+                    <p>sin(0°) = 0.0 (No N-S)</p>
+                </div>
+                <div class="example-card" onclick="setAngle(180)">
+                    <h4>South Wind (180°)</h4>
+                    <p>cos(270°) = 0.0 (No E-W)</p>
+                    <p>sin(270°) = -1.0 (South)</p>
+                </div>
+                <div class="example-card" onclick="setAngle(270)">
+                    <h4>West Wind (270°)</h4>
+                    <p>cos(180°) = -1.0 (West)</p>
+                    <p>sin(180°) = 0.0 (No N-S)</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="explanation-text">
+            <h3>🔄 Practical Example: The Boundary Problem</h3>
+            <div class="formula-box">
+                Original wind directions: [358°, 359°, 0°, 1°, 2°] (all near North)<br>
+                <br>
+                <strong>❌ Direct Analysis Problem:</strong><br>
+                Max = 359°, Min = 0° → Appears to have large variation!<br>
+                <br>
+                <strong>✅ After Transformation:</strong><br>
+                cos components: [0.999, 0.999, 1.0, 0.999, 0.999] → Very similar!<br>
+                sin components: [-0.035, -0.017, 0.0, 0.017, 0.035] → Also similar!
+            </div>
+        </div>
+        
+        <div class="explanation-text">
+            <h3>💡 Advantages for Correlation Analysis</h3>
+            <p>Benefits of this transformation:</p>
+            <ul>
+                <li><strong>Continuity</strong>: Eliminates the 0°/360° boundary problem</li>
+                <li><strong>Linear Correlation</strong>: Enables standard Pearson/Spearman correlation</li>
+                <li><strong>Physical Meaning</strong>: Separate East-West and North-South wind components</li>
+                <li><strong>Standardized Range</strong>: Both sin and cos values are within [-1,1]</li>
+                <li><strong>Meteorological Insight</strong>: Can identify which directional component affects power generation more</li>
+            </ul>
+        </div>
+        
+        <div class="explanation-text">
+            <h3>🏭 Wind Power Application</h3>
+            <p>In wind power forecasting:</p>
+            <ul>
+                <li><strong>East-West Component (cos)</strong>: May affect turbine lateral forces and yaw system</li>
+                <li><strong>North-South Component (sin)</strong>: May correlate with primary power generation efficiency</li>
+                <li><strong>Separate Analysis</strong>: Identifies which directional component has stronger correlation with power output</li>
+                <li><strong>Terrain Effects</strong>: Different directional components may interact differently with local topography</li>
+            </ul>
+        </div>
+        
+        <div class="explanation-text">
+            <h3>🔧 Implementation Notes</h3>
+            <div class="formula-box">
+                # Python Implementation<br>
+                import numpy as np<br>
+                <br>
+                # Convert meteorological to mathematical angle<br>
+                math_angle = (90 - meteorological_angle + 360) % 360<br>
+                wind_dir_rad = np.deg2rad(math_angle)<br>
+                <br>
+                # Calculate components<br>
+                east_west_component = np.cos(wind_dir_rad)    # X-axis<br>
+                north_south_component = np.sin(wind_dir_rad)   # Y-axis
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const slider = document.getElementById('angle-slider');
+        const vector = document.getElementById('wind-vector');
+        const angleValue = document.getElementById('angle-value');
+        const cosValue = document.getElementById('cos-value');
+        const sinValue = document.getElementById('sin-value');
+        const directionDesc = document.getElementById('direction-desc');
+        
+        function updateValues() {
+            const meteorologicalAngle = parseInt(slider.value);
+            
+            // Convert meteorological angle to mathematical angle
+            const mathAngle = (90 - meteorologicalAngle + 360) % 360;
+            const radians = (mathAngle * Math.PI) / 180;
+            
+            // Calculate trigonometric values (based on mathematical angle system)
+            const cosVal = Math.cos(radians);
+            const sinVal = Math.sin(radians);
+            
+            // Update display values
+            angleValue.textContent = meteorologicalAngle + '°';
+            cosValue.textContent = cosVal.toFixed(3);
+            sinValue.textContent = sinVal.toFixed(3);
+            
+            // Update direction description
+            let direction = '';
+            if (meteorologicalAngle >= 337.5 || meteorologicalAngle < 22.5) direction = 'North (N)';
+            else if (meteorologicalAngle >= 22.5 && meteorologicalAngle < 67.5) direction = 'Northeast (NE)';
+            else if (meteorologicalAngle >= 67.5 && meteorologicalAngle < 112.5) direction = 'East (E)';
+            else if (meteorologicalAngle >= 112.5 && meteorologicalAngle < 157.5) direction = 'Southeast (SE)';
+            else if (meteorologicalAngle >= 157.5 && meteorologicalAngle < 202.5) direction = 'South (S)';
+            else if (meteorologicalAngle >= 202.5 && meteorologicalAngle < 247.5) direction = 'Southwest (SW)';
+            else if (meteorologicalAngle >= 247.5 && meteorologicalAngle < 292.5) direction = 'West (W)';
+            else if (meteorologicalAngle >= 292.5 && meteorologicalAngle < 337.5) direction = 'Northwest (NW)';
+            
+            directionDesc.textContent = direction;
+            
+            // CSS rotation using meteorological angle (0° points North, clockwise)
+            // CSS default 0° points right (East), so we subtract 90° to make 0° point up (North)
+            vector.style.transform = `rotate(${meteorologicalAngle - 90}deg)`;
+        }
+        
+        function setAngle(angle) {
+            slider.value = angle;
+            updateValues();
+        }
+        
+        slider.addEventListener('input', updateValues);
+        
+        // Initialize
+        updateValues();
+        
+        // Auto demo
+        let autoDemo = false;
+        setInterval(() => {
+            if (autoDemo) {
+                const currentAngle = parseInt(slider.value);
+                const newAngle = (currentAngle + 2) % 360;
+                slider.value = newAngle;
+                updateValues();
+            }
+        }, 100);
+        
+        // Click compass to start/stop auto demo
+        document.querySelector('.compass').addEventListener('click', () => {
+            autoDemo = !autoDemo;
+            if (autoDemo) {
+                document.querySelector('.compass').style.cursor = 'pointer';
+                document.querySelector('.compass').title = 'Click to stop auto demo';
+            } else {
+                document.querySelector('.compass').style.cursor = 'default';
+                document.querySelector('.compass').title = 'Click to start auto demo';
+            }
+        });
+        
+        // Initialize compass cursor
+        document.querySelector('.compass').style.cursor = 'pointer';
+        document.querySelector('.compass').title = 'Click to start auto demo';
+    </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+Feature_Index,Feature_Name,Feature_Type
+0,obs_wind_speed_10m,Wind Speed
+1,obs_wind_speed_30m,Wind Speed
+2,obs_wind_speed_50m,Wind Speed
+3,obs_wind_speed_70m,Wind Speed
+4,obs_temperature_10m,Temperature
+5,obs_wind_dir_sin_10m,Wind Direction
+6,obs_wind_dir_cos_10m,Wind Direction
+7,obs_wind_dir_sin_30m,Wind Direction
+8,obs_wind_dir_cos_30m,Wind Direction
+9,obs_wind_dir_sin_50m,Wind Direction
+10,obs_wind_dir_cos_50m,Wind Direction
+11,obs_wind_dir_sin_70m,Wind Direction
+12,obs_wind_dir_cos_70m,Wind Direction

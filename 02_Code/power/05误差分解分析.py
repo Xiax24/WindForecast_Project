@@ -162,8 +162,11 @@ class CompleteErrorPropagationAnalyzer:
             'obs_wind_speed_30m',     # 30m风速
             'obs_wind_speed_10m',     # 10m风速
             'obs_temperature_10m',    # 温度影响
+            'obs_wind_dir_sin_50m',   # 50m风向sin
+            'obs_wind_dir_cos_50m',   # 50m风向cos
             'obs_wind_dir_sin_70m',   # 70m风向sin
-            'obs_wind_dir_cos_70m'    # 70m风向cos
+            'obs_wind_dir_cos_70m',   # 70m风向cos
+            'obs_wind_dir_sin_10m'    # 10m风向sin
         ]
         
         # 过滤出实际存在的特征

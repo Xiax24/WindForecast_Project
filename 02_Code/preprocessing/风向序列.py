@@ -51,7 +51,7 @@ def circular_mean(angles_deg):
     mean_deg = np.degrees(mean_rad)
     return mean_deg % 360
 
-def fit_von_mises_mixture(data, n_components=2):
+def fit_von_mises_mixture(data, n_components=5):
     """Fit mixture of von Mises distributions with proper algorithm"""
     try:
         clean_data = data.dropna()

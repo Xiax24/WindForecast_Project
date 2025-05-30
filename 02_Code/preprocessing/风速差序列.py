@@ -16,7 +16,7 @@ warnings.filterwarnings('ignore')
 
 # Set paths
 input_path = "/Users/xiaxin/work/WindForecast_Project/01_Data/processed/imputed_data/changma_imputed_complete.csv"
-output_path = "/Users/xiaxin/work/WindForecast_Project/03_Results/"
+output_path = "/Users/xiaxin/work/WindForecast_Project/03_Results/误差序列/"
 
 # Create output directory if it doesn't exist
 Path(output_path).mkdir(parents=True, exist_ok=True)

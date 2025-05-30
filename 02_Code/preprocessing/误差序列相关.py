@@ -407,8 +407,8 @@ def create_heatmap(corr_results, output_path):
     
     # Create single focused plot
     fig, ax = plt.subplots(1, 1, figsize=(16, 14))
-    fig.suptitle('Error Correlation Analysis: Wind Speed + Temperature Errors\nIncluding Wind Direction Sin/Cos Components\n* p<0.05, ** p<0.01, *** p<0.001', 
-                 fontsize=16, fontweight='bold')
+    # fig.suptitle('Error Correlation Analysis: Wind Speed + Temperature Errors\nIncluding Wind Direction Sin/Cos Components\n* p<0.05, ** p<0.01, *** p<0.001', 
+    #              fontsize=16, fontweight='bold')
     
     colormap = create_custom_colormap()
     

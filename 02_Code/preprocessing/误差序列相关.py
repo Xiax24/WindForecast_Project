@@ -24,7 +24,7 @@ sns.set_style("whitegrid")
 
 # File paths
 INPUT_FILE = "/Users/xiaxin/work/WindForecast_Project/01_Data/processed/imputed_data/changma_imputed_complete.csv"
-OUTPUT_DIR = "/Users/xiaxin/work/WindForecast_Project/03_Results/error_correlation_analysis/"
+OUTPUT_DIR = "/Users/xiaxin/work/WindForecast_Project/03_Results/误差序列相关分析/"
 
 def main():
     """Main analysis function"""

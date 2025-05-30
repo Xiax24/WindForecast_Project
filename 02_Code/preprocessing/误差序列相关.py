@@ -286,7 +286,7 @@ def create_custom_colormap():
     return mcolors.LinearSegmentedColormap.from_list('custom', colors, N=256)
 
 def create_heatmap(corr_results, output_path):
-    """Create correlation heatmap visualization"""
+    """Create correlation heatmap visualization - Single focused plot only"""
     print("  Creating correlation heatmap...")
     
     corr_matrix = corr_results['correlations']
@@ -360,31 +360,7 @@ def create_heatmap(corr_results, output_path):
         
         short_names.append(name)
     
-    # Create the visualization
-    fig, axes = plt.subplots(1, 2, figsize=(24, 12))
-    fig.suptitle('Error Correlation Analysis: Wind Speed + Temperature Errors\nIncluding Wind Direction Sin/Cos Components\n* p<0.05, ** p<0.01, *** p<0.001', 
-                 fontsize=16, fontweight='bold')
-    
-    colormap = create_custom_colormap()
-    
-    # Left plot: Full correlation matrix (upper triangle)
-    ax1 = axes[0]
-    mask_upper = np.triu(np.ones_like(corr_ordered, dtype=bool))
-    
-    corr_display = corr_ordered.copy()
-    corr_display.columns = short_names
-    corr_display.index = short_names
-    
-    sns.heatmap(corr_display, mask=mask_upper, cmap=colormap, center=0,
-                square=True, vmin=-1, vmax=1, cbar_kws={"shrink": .6},
-                ax=ax1, cbar=True)
-    ax1.set_title('Complete Correlation Matrix', fontsize=14, fontweight='bold')
-    ax1.tick_params(axis='both', labelsize=8)
-    
-    # Right plot: Focus on errors and key variables
-    ax2 = axes[1]
-    
-    # Select error variables and important observation variables
+    # Select error variables and important observation variables for focused plot
     error_indices = [i for i, var in enumerate(ordered_variables) if '_error_' in var]
     key_obs_indices = []
     
@@ -396,7 +372,7 @@ def create_heatmap(corr_results, output_path):
             'power' in var):
             key_obs_indices.append(i)
     
-    # Combine indices for subset
+    # Combine indices for subset (可以调整这个数字来控制变量数量)
     subset_indices = error_indices + key_obs_indices[:16]  # Limit for readability
     subset_variables = [ordered_variables[i] for i in subset_indices]
     subset_names = [short_names[i] for i in subset_indices]
@@ -429,11 +405,23 @@ def create_heatmap(corr_results, output_path):
     corr_subset.columns = subset_names
     corr_subset.index = subset_names
     
+    # Create single focused plot
+    fig, ax = plt.subplots(1, 1, figsize=(16, 14))
+    fig.suptitle('Error Correlation Analysis: Wind Speed + Temperature Errors\nIncluding Wind Direction Sin/Cos Components\n* p<0.05, ** p<0.01, *** p<0.001', 
+                 fontsize=16, fontweight='bold')
+    
+    colormap = create_custom_colormap()
+    
     sns.heatmap(corr_subset, annot=annotations, cmap=colormap, center=0,
-                square=True, vmin=-1, vmax=1, fmt='', cbar_kws={"shrink": .6},
-                ax=ax2, annot_kws={'size': 7})
-    ax2.set_title('Errors + Wind Direction Components Focus', fontsize=14, fontweight='bold')
-    ax2.tick_params(axis='both', labelsize=9)
+                square=True, vmin=-1, vmax=1, fmt='', cbar_kws={"shrink": .8},
+                ax=ax, annot_kws={'size': 8})
+    ax.set_title('Error Variables vs Key Observation Variables\nDetailed Correlation Matrix', 
+                 fontsize=14, fontweight='bold', pad=20)
+    ax.tick_params(axis='both', labelsize=10)
+    
+    # 调整布局，给标签更多空间
+    plt.xticks(rotation=45, ha='right')
+    plt.yticks(rotation=0)
     
     # Save the plot
     plt.tight_layout()
@@ -445,6 +433,7 @@ def create_heatmap(corr_results, output_path):
     print(f"    Wind speed errors: {len(wind_speed_errors)}")
     print(f"    Temperature errors: {len(temp_errors)}")
     print(f"    Wind direction sin/cos components: {len(wind_sincos_vars)}")
+    print(f"    Total variables in plot: {len(subset_variables)}")
 
 def analyze_error_power(corr_results, output_path):
     """Analyze correlations between errors and power"""

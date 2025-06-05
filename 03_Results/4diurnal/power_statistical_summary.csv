@@ -1,0 +1,2 @@
+variable,mean,std,min,max,day_mean,night_mean,day_night_diff,peak_hour,trough_hour,diurnal_range
+power,47.25656728405681,46.74790899766413,0.0,193.4696,46.22024747168213,48.48136781633163,-2.2611203446494983,18,8,17.2664052293578

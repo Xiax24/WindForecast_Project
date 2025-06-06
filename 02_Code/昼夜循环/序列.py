@@ -22,7 +22,7 @@ colors = {
 
 # 数据和结果路径
 data_path = '/Users/xiaxin/work/WindForecast_Project/01_Data/processed/imputed_data/changma_imputed_complete.csv'
-results_dir = '/Users/xiaxin/work/WindForecast_Project/03_Results/6diurnal_sequence/'
+results_dir = '/Users/xiaxin/work/WindForecast_Project/03_Results/7everydiurnal_sequence/'
 
 # 创建结果目录
 os.makedirs(results_dir, exist_ok=True)

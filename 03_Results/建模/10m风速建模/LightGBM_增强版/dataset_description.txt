@@ -1,0 +1,29 @@
+
+10m风速订正完整数据集说明
+=========================
+
+数据文件:
+1. corrected_10m_wind_full_dataset.csv - 完整数据集(100%)
+2. corrected_10m_wind_training_period.csv - 训练期数据(80%)
+
+主要列说明:
+- datetime: 时间
+- obs_wind_speed_10m: 观测10m风速
+- corrected_wind_speed_10m: 订正后10m风速（用于下一步EOF分析）
+- ec_wind_speed_10m: EC原始预报
+- gfs_wind_speed_10m: GFS原始预报
+- ec_gfs_mean: EC和GFS平均值
+- ec_gfs_diff: EC和GFS差值（模式分歧度）
+- data_split: train/test 数据划分标记
+- obs_wind_speed_30m/50m/70m: 多高度观测数据（如果可用）
+
+下一步使用说明:
+- 使用 corrected_wind_speed_10m 作为EOF1预测的输入特征
+- 使用训练期的风廓线数据进行EOF分解
+- 训练期数据: 41853 条记录
+- 完整数据集: 52317 条记录
+- 时间范围: 2021-05-01 00:00:00 到 2022-10-31 23:45:00
+
+数据质量检查:
+- 10m订正相关性: 在测试集上需要验证
+- 风廓线完整性: 检查30m/50m/70m数据可用性

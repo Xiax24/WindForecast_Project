@@ -1,0 +1,72 @@
+{
+  "summary": {
+    "total_comparisons": 18,
+    "ec_wins": 10,
+    "gfs_wins": 8,
+    "ec_win_rate": 55.55555555555556,
+    "gfs_win_rate": 44.44444444444444,
+    "ec_avg_r2": -0.144622872747727,
+    "gfs_avg_r2": -0.17159454578587197,
+    "overall_performance_gap": 0.02697167303814496
+  },
+  "by_classification": {
+    "weak_night": {
+      "ec_avg_r2": 0.32736480093697146,
+      "gfs_avg_r2": 0.25290186425257255,
+      "performance_gap": 0.0744629366843989,
+      "sample_count": 3
+    },
+    "moderate_night": {
+      "ec_avg_r2": 0.013322812251059912,
+      "gfs_avg_r2": 0.006830895313398015,
+      "performance_gap": 0.006491916937661897,
+      "sample_count": 3
+    },
+    "moderate_day": {
+      "ec_avg_r2": 0.0033457557600251597,
+      "gfs_avg_r2": 0.01448980006491459,
+      "performance_gap": -0.01114404430488943,
+      "sample_count": 3
+    },
+    "weak_day": {
+      "ec_avg_r2": 0.5080585234803056,
+      "gfs_avg_r2": 0.42754730442447225,
+      "performance_gap": 0.0805112190558333,
+      "sample_count": 3
+    },
+    "strong_day": {
+      "ec_avg_r2": -0.9184111895606891,
+      "gfs_avg_r2": -1.0900375652532392,
+      "performance_gap": 0.17162637569255013,
+      "sample_count": 3
+    },
+    "strong_night": {
+      "ec_avg_r2": -0.8014179393540347,
+      "gfs_avg_r2": -0.6412995735173501,
+      "performance_gap": -0.1601183658366846,
+      "sample_count": 3
+    }
+  },
+  "by_variable": {
+    "wind_speed_10m": {
+      "ec_avg_r2": -1.208774685365228,
+      "gfs_avg_r2": -1.2257127715915843,
+      "performance_gap": 0.016938086226356397
+    },
+    "wind_speed_70m": {
+      "ec_avg_r2": -0.17543852894217368,
+      "gfs_avg_r2": -0.2432504546456229,
+      "performance_gap": 0.06781192570344921
+    },
+    "temperature_10m": {
+      "ec_avg_r2": 0.9503445960642208,
+      "gfs_avg_r2": 0.9541795888795913,
+      "performance_gap": -0.003834992815370475
+    }
+  },
+  "recommendations": [
+    "EC和GFS模式预报性能相当，建议根据具体情况选择或集成使用",
+    "在strong_day条件下，建议使用EC模式预报",
+    "对于wind_speed_70m变量，建议优先使用EC模式预报"
+  ]
+}

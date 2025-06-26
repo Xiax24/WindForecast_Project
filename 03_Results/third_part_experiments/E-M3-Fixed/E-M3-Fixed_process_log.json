@@ -1,0 +1,91 @@
+{
+  "experiment_name": "E-M3-Fixed",
+  "experiment_config": {
+    "name": "E-M3-Fixed",
+    "wind_cols": [
+      "ec_wind_speed_10m",
+      "ec_wind_speed_70m"
+    ],
+    "weights": [
+      0.55,
+      0.45
+    ],
+    "description": "EC\u56fa\u5b9a\u6743\u91cd\u878d\u5408(\u57fa\u4e8eSHAP\u603b\u4f53\u6bd4\u4f8b)"
+  },
+  "data_cleaning_log": [
+    "\u79fb\u9664\u529f\u7387NaN: 52317 -> 52317",
+    "\u79fb\u9664\u8d1f\u529f\u7387: 52317 -> 52317"
+  ],
+  "data_processing_log": [
+    "\u8bd5\u9a8c\u7c7b\u578b: \u591a\u98ce\u901f\u878d\u5408",
+    "\u8f93\u5165\u98ce\u901f\u5217: ['ec_wind_speed_10m', 'ec_wind_speed_70m']",
+    "\u79fb\u9664\u591a\u98ce\u901fNaN: 52317 -> 52317",
+    "\u591a\u98ce\u901f\u8303\u56f4\u8fc7\u6ee4: 52317 -> 52317",
+    "\u878d\u5408\u7b56\u7565: \u56fa\u5b9a\u6743\u91cd [0.55, 0.45]",
+    "\u6743\u91cd\u5e94\u7528\u6837\u4f8b: ['0.55*7.48', '0.45*11.19'] = 9.15",
+    "\u878d\u5408\u540e\u98ce\u901f\u7edf\u8ba1: \u5747\u503c=6.4142, \u6807\u51c6\u5dee=2.9907",
+    "\u6700\u7ec8\u6570\u636e\u5927\u5c0f: 52317"
+  ],
+  "feature_statistics": {
+    "wind_speed": {
+      "mean": 6.41417574800643,
+      "std": 2.9907373271059945,
+      "min": 0.1181636205,
+      "max": 20.46555195
+    },
+    "wind_speed_2": {
+      "mean": 50.085989318500424,
+      "std": 44.11563472023674,
+      "min": 0.013962641209668019,
+      "max": 418.8388166181487
+    },
+    "wind_speed_3": {
+      "mean": 447.77538522621853,
+      "std": 612.4148889537444,
+      "min": 0.0016498762370768727,
+      "max": 8571.767560175245
+    },
+    "hour": {
+      "mean": 11.500315385056483,
+      "std": 6.92226788967128,
+      "min": "0",
+      "max": "23"
+    },
+    "month": {
+      "mean": 6.853202591891737,
+      "std": 3.0224286978037638,
+      "min": "1",
+      "max": "12"
+    },
+    "is_daytime": {
+      "mean": 0.5000095571229237,
+      "std": 0.5000047785386273,
+      "min": "0",
+      "max": "1"
+    },
+    "wind_lag_1h": {
+      "mean": 6.414239915363695,
+      "std": 2.9907600142823574,
+      "min": 0.1181636205,
+      "max": 20.46555195
+    },
+    "wind_lag_24h": {
+      "mean": 6.415052907077956,
+      "std": 2.9911945375923183,
+      "min": 0.1181636205,
+      "max": 20.46555195
+    }
+  },
+  "split_statistics": {
+    "train_size": 41853,
+    "test_size": 10464,
+    "train_power_mean": 49.1909929993071,
+    "test_power_mean": 39.5194190175841,
+    "train_wind_mean": 6.402756796656975,
+    "test_wind_mean": 6.459848279622324
+  },
+  "final_metrics": {
+    "RMSE": 33.15612284027022,
+    "Correlation": 0.6295216203978999
+  }
+}

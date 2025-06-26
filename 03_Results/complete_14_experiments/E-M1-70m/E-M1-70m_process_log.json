@@ -1,0 +1,19 @@
+{
+  "experiment_name": "E-M1-70m",
+  "experiment_config": {
+    "name": "E-M1-70m",
+    "description": "EC\u539f\u59cb70m\u98ce\u901f\u76f4\u63a5\u9884\u6d4b\u529f\u7387",
+    "type": "direct",
+    "wind_col": "ec_wind_speed_70m"
+  },
+  "processing_log": [
+    "\u8bd5\u9a8c\u7c7b\u578b: direct",
+    "\u6570\u636e\u5927\u5c0f: 52317",
+    "\u76f4\u63a5\u9884\u6d4b\u98ce\u901f\u5217: ec_wind_speed_70m",
+    "\u76f4\u63a5\u9884\u6d4b\u6027\u80fd: RMSE=33.3369, \u76f8\u5173\u7cfb\u6570=0.6234"
+  ],
+  "final_performance": {
+    "rmse": 33.33692067587039,
+    "correlation": 0.6233711563929385
+  }
+}

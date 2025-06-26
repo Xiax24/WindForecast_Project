@@ -1,0 +1,4 @@
+﻿Variable,Total_Classifications,EC_CORR_Significant_Count,GFS_CORR_Significant_Count,CORR_Diff_Significant_Count,BIAS_Diff_Significant_Count,RMSE_Diff_Significant_Count,EC_CORR_Significant_Percent,GFS_CORR_Significant_Percent,CORR_Diff_Significant_Percent,BIAS_Diff_Significant_Percent,RMSE_Diff_Significant_Percent
+10m Wind Speed,6,6,6,5,4,6,100.0,100.0,83.33333333333334,66.66666666666666,100.0
+70m Wind Speed,6,6,6,4,6,4,100.0,100.0,66.66666666666666,100.0,66.66666666666666
+10m Temperature,6,6,6,2,6,5,100.0,100.0,33.33333333333333,100.0,83.33333333333334

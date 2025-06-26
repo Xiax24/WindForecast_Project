@@ -1,0 +1,16 @@
+试验结果排名 (按RMSE排序):
+================================================================================
+1. Fusion-M2: RMSE=32.8577, Corr=0.6432
+2. Fusion-M1: RMSE=32.8875, Corr=0.6439
+3. E-M3-Fixed: RMSE=33.1561, Corr=0.6295
+4. E-M3-TimeAdaptive: RMSE=33.2505, Corr=0.6281
+5. E-M1-10m: RMSE=33.2538, Corr=0.6282
+6. E-M2-10m: RMSE=33.2538, Corr=0.6282
+7. E-M1-70m: RMSE=33.2983, Corr=0.6233
+8. E-M2-70m: RMSE=33.2983, Corr=0.6233
+9. G-M1-10m: RMSE=33.5245, Corr=0.6164
+10. G-M2-10m: RMSE=33.5245, Corr=0.6164
+11. G-M3-Fixed: RMSE=33.9664, Corr=0.5998
+12. G-M3-TimeAdaptive: RMSE=34.0422, Corr=0.5989
+13. G-M1-70m: RMSE=34.2093, Corr=0.5914
+14. G-M2-70m: RMSE=34.2093, Corr=0.5914

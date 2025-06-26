@@ -1,0 +1,28 @@
+14个试验综合分析报告
+==================================================
+
+1. 总体排名 (按RMSE):
+1. Fusion-M1: RMSE=31.7160, Corr=0.6631
+2. Fusion-M2: RMSE=31.9149, Corr=0.6548
+3. G-M2-70m: RMSE=32.6539, Corr=0.6252
+4. G-M2-10m: RMSE=32.9289, Corr=0.6257
+5. E-M1-10m: RMSE=33.1672, Corr=0.6312
+6. E-M2-10m: RMSE=33.1708, Corr=0.6283
+7. E-M3-TimeAdaptive: RMSE=33.2556, Corr=0.6278
+8. E-M3-Fixed: RMSE=33.3137, Corr=0.6251
+9. E-M1-70m: RMSE=33.3369, Corr=0.6234
+10. G-M1-10m: RMSE=33.7579, Corr=0.6095
+11. E-M2-70m: RMSE=33.8399, Corr=0.6067
+12. G-M3-TimeAdaptive: RMSE=33.9983, Corr=0.5981
+13. G-M3-Fixed: RMSE=34.0057, Corr=0.5989
+14. G-M1-70m: RMSE=34.2257, Corr=0.5908
+
+2. 按类型分析:
+DIRECT: 最佳RMSE=33.1672 (E-M1-10m)
+TWO_STEP: 最佳RMSE=32.6539 (G-M2-70m)
+FUSION: 最佳RMSE=31.7160 (Fusion-M1)
+
+3. 主要发现:
+- 最佳试验: Fusion-M1 (RMSE: 31.7160)
+- 最佳策略: 联合校正后静态融合
+- ML校正效果: 平均改善 1.41%

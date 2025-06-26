@@ -1,0 +1,85 @@
+{
+  "experiment_name": "E-M2-70m",
+  "experiment_config": {
+    "name": "E-M2-70m",
+    "wind_col": "ec_wind_speed_70m",
+    "use_correction": true,
+    "correction_factor": 1.01,
+    "description": "EC\u6821\u6b63\u540e70m\u98ce\u901f"
+  },
+  "data_cleaning_log": [
+    "\u79fb\u9664\u529f\u7387NaN: 52317 -> 52317",
+    "\u79fb\u9664\u8d1f\u529f\u7387: 52317 -> 52317"
+  ],
+  "data_processing_log": [
+    "\u8bd5\u9a8c\u7c7b\u578b: \u5355\u98ce\u901f",
+    "\u8f93\u5165\u98ce\u901f\u5217: ec_wind_speed_70m",
+    "\u79fb\u9664ec_wind_speed_70m\u7684NaN: 52317 -> 52317",
+    "\u98ce\u901f\u8303\u56f4\u8fc7\u6ee4[0,50]: 52317 -> 52317",
+    "\u504f\u5dee\u6821\u6b63: \u56e0\u5b50=1.01, \u5747\u503c 7.4349 -> 7.5092",
+    "\u6700\u7ec8\u7279\u5f81\u98ce\u901f\u5217: ec_wind_speed_70m",
+    "\u6700\u7ec8\u6570\u636e\u5927\u5c0f: 52317"
+  ],
+  "feature_statistics": {
+    "wind_speed": {
+      "mean": 7.509239282458506,
+      "std": 3.6340544473483143,
+      "min": 0.02572233862,
+      "max": 22.75666047
+    },
+    "wind_speed_2": {
+      "mean": 69.59477389805637,
+      "std": 60.78753181616208,
+      "min": 0.0006616387040819436,
+      "max": 517.8655957468607
+    },
+    "wind_speed_3": {
+      "mean": 734.9486310300855,
+      "std": 950.8915464863627,
+      "min": 1.7018894790493726e-05,
+      "max": 11784.891531505584
+    },
+    "hour": {
+      "mean": 11.500315385056483,
+      "std": 6.92226788967128,
+      "min": "0",
+      "max": "23"
+    },
+    "month": {
+      "mean": 6.853202591891737,
+      "std": 3.0224286978037638,
+      "min": "1",
+      "max": "12"
+    },
+    "is_daytime": {
+      "mean": 0.5000095571229237,
+      "std": 0.5000047785386273,
+      "min": "0",
+      "max": "1"
+    },
+    "wind_lag_1h": {
+      "mean": 7.509298502123245,
+      "std": 3.634091043275139,
+      "min": 0.02572233862,
+      "max": 22.75666047
+    },
+    "wind_lag_24h": {
+      "mean": 7.509896632957389,
+      "std": 3.6345291945551046,
+      "min": 0.02572233862,
+      "max": 22.75666047
+    }
+  },
+  "split_statistics": {
+    "train_size": 41853,
+    "test_size": 10464,
+    "train_power_mean": 49.1909929993071,
+    "test_power_mean": 39.5194190175841,
+    "train_wind_mean": 7.497255090152519,
+    "test_wind_mean": 7.557172615847506
+  },
+  "final_metrics": {
+    "RMSE": 33.29830535634434,
+    "Correlation": 0.6233393072694968
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "target_height": "10m",
+  "source": "gfs",
+  "feature_names": [
+    "forecast_wind",
+    "forecast_wind_2",
+    "other_height_wind",
+    "wind_shear",
+    "temperature",
+    "hour",
+    "month",
+    "day_of_year",
+    "is_daytime",
+    "wind_lag_1h",
+    "wind_lag_24h",
+    "wind_24h_mean",
+    "wind_24h_std"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "experiment_name": "G-M1-10m",
+  "experiment_config": {
+    "name": "G-M1-10m",
+    "description": "GFS\u539f\u59cb10m\u98ce\u901f\u76f4\u63a5\u9884\u6d4b\u529f\u7387",
+    "type": "direct",
+    "wind_col": "gfs_wind_speed_10m"
+  },
+  "processing_log": [
+    "\u8bd5\u9a8c\u7c7b\u578b: direct",
+    "\u6570\u636e\u5927\u5c0f: 52317",
+    "\u76f4\u63a5\u9884\u6d4b\u98ce\u901f\u5217: gfs_wind_speed_10m",
+    "\u76f4\u63a5\u9884\u6d4b\u6027\u80fd: RMSE=33.7579, \u76f8\u5173\u7cfb\u6570=0.6095"
+  ],
+  "final_performance": {
+    "rmse": 33.75788815647085,
+    "correlation": 0.6095413764451604
+  }
+}

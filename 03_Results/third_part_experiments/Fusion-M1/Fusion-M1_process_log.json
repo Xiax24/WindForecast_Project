@@ -1,0 +1,94 @@
+{
+  "experiment_name": "Fusion-M1",
+  "experiment_config": {
+    "name": "Fusion-M1",
+    "wind_cols": [
+      "ec_wind_speed_10m",
+      "ec_wind_speed_70m",
+      "gfs_wind_speed_10m",
+      "gfs_wind_speed_70m"
+    ],
+    "fusion_strategy": "corrected_average",
+    "description": "\u8054\u5408\u6821\u6b63\u540e\u878d\u5408"
+  },
+  "data_cleaning_log": [
+    "\u79fb\u9664\u529f\u7387NaN: 52317 -> 52317",
+    "\u79fb\u9664\u8d1f\u529f\u7387: 52317 -> 52317"
+  ],
+  "data_processing_log": [
+    "\u8bd5\u9a8c\u7c7b\u578b: \u591a\u98ce\u901f\u878d\u5408",
+    "\u8f93\u5165\u98ce\u901f\u5217: ['ec_wind_speed_10m', 'ec_wind_speed_70m', 'gfs_wind_speed_10m', 'gfs_wind_speed_70m']",
+    "\u79fb\u9664\u591a\u98ce\u901fNaN: 52317 -> 52317",
+    "\u591a\u98ce\u901f\u8303\u56f4\u8fc7\u6ee4: 52317 -> 52317",
+    "\u878d\u5408\u7b56\u7565: \u8054\u5408\u6821\u6b63\u540e\u5e73\u5747",
+    "EC-10m\u6821\u6b63: 5.5790 -> 5.7464",
+    "EC-70m\u6821\u6b63: 7.4349 -> 7.5092",
+    "GFS-10m\u6821\u6b63: 5.6527 -> 5.9353",
+    "GFS-70m\u6821\u6b63: 7.5545 -> 7.4034",
+    "\u878d\u5408\u6743\u91cd: EC-10m(0.4) + EC-70m(0.2) + GFS-10m(0.3) + GFS-70m(0.1)",
+    "\u878d\u5408\u540e\u98ce\u901f\u7edf\u8ba1: \u5747\u503c=6.3213, \u6807\u51c6\u5dee=2.7670",
+    "\u6700\u7ec8\u6570\u636e\u5927\u5c0f: 52317"
+  ],
+  "feature_statistics": {
+    "wind_speed": {
+      "mean": 6.321349231250505,
+      "std": 2.7670202860363338,
+      "min": 0.50558001953,
+      "max": 20.34197195
+    },
+    "wind_speed_2": {
+      "mean": 47.615711020431895,
+      "std": 42.25131621547331,
+      "min": 0.25561115614795515,
+      "max": 413.79582281458687
+    },
+    "wind_speed_3": {
+      "mean": 413.4932473668112,
+      "std": 599.7578757533431,
+      "min": 0.12923189331736903,
+      "max": 8417.423020721497
+    },
+    "hour": {
+      "mean": 11.500315385056483,
+      "std": 6.92226788967128,
+      "min": "0",
+      "max": "23"
+    },
+    "month": {
+      "mean": 6.853202591891737,
+      "std": 3.0224286978037638,
+      "min": "1",
+      "max": "12"
+    },
+    "is_daytime": {
+      "mean": 0.5000095571229237,
+      "std": 0.5000047785386273,
+      "min": "0",
+      "max": "1"
+    },
+    "wind_lag_1h": {
+      "mean": 6.321411938631609,
+      "std": 2.7670266242613106,
+      "min": 0.50558001953,
+      "max": 20.34197195
+    },
+    "wind_lag_24h": {
+      "mean": 6.322143514500758,
+      "std": 2.767258174250468,
+      "min": 0.50558001953,
+      "max": 20.34197195
+    }
+  },
+  "split_statistics": {
+    "train_size": 41853,
+    "test_size": 10464,
+    "train_power_mean": 49.1909929993071,
+    "test_power_mean": 39.5194190175841,
+    "train_wind_mean": 6.298828398133611,
+    "test_wind_mean": 6.411426107057207
+  },
+  "final_metrics": {
+    "RMSE": 32.88751327930039,
+    "Correlation": 0.6439413462468061
+  }
+}

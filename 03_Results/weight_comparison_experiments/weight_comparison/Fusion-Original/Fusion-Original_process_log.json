@@ -1,0 +1,47 @@
+{
+  "experiment_name": "Fusion-Original",
+  "experiment_config": {
+    "name": "Fusion-Original",
+    "description": "\u539f\u59cb\u6743\u91cd (EC\u4e3b\u5bfc)",
+    "type": "fusion",
+    "wind_configs": [
+      {
+        "source": "ec",
+        "height": "10m"
+      },
+      {
+        "source": "ec",
+        "height": "70m"
+      },
+      {
+        "source": "gfs",
+        "height": "10m"
+      },
+      {
+        "source": "gfs",
+        "height": "70m"
+      }
+    ],
+    "fusion_strategy": "corrected",
+    "weights": [
+      0.4,
+      0.2,
+      0.3,
+      0.1
+    ]
+  },
+  "processing_log": [
+    "\u8bd5\u9a8c\u7c7b\u578b: fusion",
+    "\u6570\u636e\u5927\u5c0f: 52317",
+    "\u878d\u5408\u7b56\u7565: corrected",
+    "\u98ce\u901f\u914d\u7f6e: [{'source': 'ec', 'height': '10m'}, {'source': 'ec', 'height': '70m'}, {'source': 'gfs', 'height': '10m'}, {'source': 'gfs', 'height': '70m'}]",
+    "ec_10m\u6821\u6b63\u6027\u80fd: RMSE=1.9061",
+    "ec_70m\u6821\u6b63\u6027\u80fd: RMSE=2.3116",
+    "gfs_10m\u6821\u6b63\u6027\u80fd: RMSE=1.9408",
+    "gfs_70m\u6821\u6b63\u6027\u80fd: RMSE=2.3587"
+  ],
+  "final_performance": {
+    "rmse": 31.979070377570956,
+    "correlation": 0.6579114146598706
+  }
+}

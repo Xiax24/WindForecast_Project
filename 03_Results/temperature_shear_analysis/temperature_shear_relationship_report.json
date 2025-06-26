@@ -1,0 +1,57 @@
+{
+  "overall_correlation_alpha": -0.0748337709794118,
+  "overall_p_value_alpha": 1.12003534083065e-64,
+  "overall_correlation_linear": -0.11582235251777312,
+  "overall_p_value_linear": 7.619801567400346e-153,
+  "classification_accuracy": 0.3802819644039413,
+  "sample_size": 51354,
+  "time_period_correlations": {
+    "dawn": {
+      "correlation": 0.01721444594091198,
+      "p_value": 0.05157874676855542,
+      "sample_size": 12788,
+      "hours": "00-06"
+    },
+    "morning": {
+      "correlation": -0.06600497245091658,
+      "p_value": 8.177267846670821e-14,
+      "sample_size": 12774,
+      "hours": "06-12"
+    },
+    "afternoon": {
+      "correlation": 0.0019524255303787323,
+      "p_value": 0.8242887478906095,
+      "sample_size": 12935,
+      "hours": "12-18"
+    },
+    "evening": {
+      "correlation": -0.10251173806532482,
+      "p_value": 2.208627014264271e-31,
+      "sample_size": 12857,
+      "hours": "18-24"
+    }
+  },
+  "seasonal_correlations": {
+    "spring": -0.060243904220860345,
+    "summer": -0.11492515755312914,
+    "autumn": -0.05301258639671197,
+    "winter": -0.1936084451297503
+  },
+  "temperature_statistics_by_shear": {
+    "weak": {
+      "mean": 15.292846667600765,
+      "std": 11.734510122752077,
+      "count": "28548"
+    },
+    "moderate": {
+      "mean": 12.654772296868389,
+      "std": 12.06100184218156,
+      "count": "20016"
+    },
+    "strong": {
+      "mean": 12.783916143088058,
+      "std": 12.364890360102935,
+      "count": "2790"
+    }
+  }
+}

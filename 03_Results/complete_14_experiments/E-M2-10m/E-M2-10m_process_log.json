@@ -1,0 +1,21 @@
+{
+  "experiment_name": "E-M2-10m",
+  "experiment_config": {
+    "name": "E-M2-10m",
+    "description": "EC 10m\u98ce\u901f\u4e24\u6b65\u6cd5ML\u6821\u6b63",
+    "type": "two_step",
+    "wind_source": "ec",
+    "wind_height": "10m"
+  },
+  "processing_log": [
+    "\u8bd5\u9a8c\u7c7b\u578b: two_step",
+    "\u6570\u636e\u5927\u5c0f: 52317",
+    "\u4e24\u6b65\u6cd5\u6821\u6b63: EC-10m",
+    "\u98ce\u901f\u6821\u6b63\u6027\u80fd: RMSE=1.9061",
+    "\u529f\u7387\u9884\u6d4b\u6027\u80fd: RMSE=33.1708"
+  ],
+  "final_performance": {
+    "rmse": 33.17075225115118,
+    "correlation": 0.6283356030542436
+  }
+}

@@ -41852,10 +41852,10 @@
     41849,
     41850,
     41851,
-    41852
+    41852,
+    41853
   ],
   "test_indices": [
-    41853,
     41854,
     41855,
     41856,
@@ -52320,7 +52320,9 @@
     52315,
     52316
   ],
-  "split_date": "2022-07-14T23:45:00",
-  "train_size": 41853,
-  "test_size": 10464
+  "total_samples": 52317,
+  "train_size": 41854,
+  "test_size": 10463,
+  "test_ratio": 0.2,
+  "split_method": "time_based"
 }

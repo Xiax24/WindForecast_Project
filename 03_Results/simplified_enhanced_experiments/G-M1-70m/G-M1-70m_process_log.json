@@ -1,0 +1,21 @@
+{
+  "experiment_name": "G-M1-70m",
+  "experiment_config": {
+    "name": "G-M1-70m",
+    "description": "GFS\u539f\u59cb70m\u98ce\u901f\u76f4\u63a5\u9884\u6d4b\u529f\u7387",
+    "type": "direct",
+    "wind_col": "gfs_wind_speed_70m"
+  },
+  "processing_log": [
+    "\u8bd5\u9a8c\u7c7b\u578b: direct",
+    "\u521d\u59cb\u6e05\u7406\u540e\u6570\u636e\u5927\u5c0f: 52317 (\u5728\u7279\u5b9a\u8bd5\u9a8c\u6e05\u7406\u524d)",
+    "\u76f4\u63a5\u9884\u6d4b\u98ce\u901f\u5217: gfs_wind_speed_70m",
+    "'G-M1-70m' \u8bd5\u9a8c\u7279\u5b9a\u6e05\u7406\u540e\u6570\u636e\u5927\u5c0f: 52317",
+    "\u529f\u7387\u9884\u6d4b\u6a21\u578b\u8f93\u5165\u7279\u5f81 (M1): ['wind_speed', 'wind_speed_2', 'wind_speed_3', 'hour', 'month', 'is_daytime', 'wind_lag_1h', 'wind_lag_24h']",
+    "\u76f4\u63a5\u9884\u6d4b\u6027\u80fd: RMSE=34.2374, \u76f8\u5173\u7cfb\u6570=0.5902"
+  ],
+  "final_performance": {
+    "rmse": 34.23744852420031,
+    "correlation": 0.5902370195334267
+  }
+}

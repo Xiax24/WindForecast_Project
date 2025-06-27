@@ -1,15 +1,15 @@
-experiment,description,type,RMSE,Correlation
-G-M1-10m,GFS原始10m风速直接预测功率,direct,33.75788815647085,0.6095413764451604
-G-M1-70m,GFS原始70m风速直接预测功率,direct,34.225727329182035,0.5907601857263068
-E-M1-10m,EC原始10m风速直接预测功率,direct,33.16715634547069,0.6311847128024284
-E-M1-70m,EC原始70m风速直接预测功率,direct,33.33692067587039,0.6233711563929385
-G-M2-10m,GFS 10m风速两步法ML校正,two_step,32.92889685208382,0.62574288607092
-G-M2-70m,GFS 70m风速两步法ML校正,two_step,32.653870954528614,0.6251820684901276
-E-M2-10m,EC 10m风速两步法ML校正,two_step,33.17075225115118,0.6283356030542436
-E-M2-70m,EC 70m风速两步法ML校正,two_step,33.83994460342794,0.6066602360724233
-G-M3-Fixed,GFS固定权重融合(基于SHAP),fusion,34.005742388677334,0.5988773056592966
-G-M3-TimeAdaptive,GFS昼夜动态权重融合(基于SHAP),fusion,33.9982808278186,0.5981080343191215
-E-M3-Fixed,EC固定权重融合(基于SHAP),fusion,33.31374616047008,0.6250947476658559
-E-M3-TimeAdaptive,EC昼夜动态权重融合(基于SHAP),fusion,33.25563844390016,0.6278372722230167
-Fusion-M1,联合校正后静态融合,fusion,31.716045221203736,0.6631452745020937
-Fusion-M2,ML校正后无数据泄露的权重优化融合,no_leakage_fusion,31.91486212739601,0.6548272483907916
+experiment,description,type,RMSE,Correlation,error
+G-M1-10m,GFS原始10m风速直接预测功率,direct,,,[Errno 2] No such file or directory: '/Users/xiaxin/work/WindForecast_Project/03_Results/third_part_experiments/train_test_split.json'
+G-M1-70m,GFS原始70m风速直接预测功率,direct,,,[Errno 2] No such file or directory: '/Users/xiaxin/work/WindForecast_Project/03_Results/third_part_experiments/train_test_split.json'
+E-M1-10m,EC原始10m风速直接预测功率,direct,,,[Errno 2] No such file or directory: '/Users/xiaxin/work/WindForecast_Project/03_Results/third_part_experiments/train_test_split.json'
+E-M1-70m,EC原始70m风速直接预测功率,direct,,,[Errno 2] No such file or directory: '/Users/xiaxin/work/WindForecast_Project/03_Results/third_part_experiments/train_test_split.json'
+G-M2-10m,GFS 10m风速两步法ML校正,two_step,,,[Errno 2] No such file or directory: '/Users/xiaxin/work/WindForecast_Project/03_Results/third_part_experiments/train_test_split.json'
+G-M2-70m,GFS 70m风速两步法ML校正,two_step,,,[Errno 2] No such file or directory: '/Users/xiaxin/work/WindForecast_Project/03_Results/third_part_experiments/train_test_split.json'
+E-M2-10m,EC 10m风速两步法ML校正,two_step,,,[Errno 2] No such file or directory: '/Users/xiaxin/work/WindForecast_Project/03_Results/third_part_experiments/train_test_split.json'
+E-M2-70m,EC 70m风速两步法ML校正,two_step,,,[Errno 2] No such file or directory: '/Users/xiaxin/work/WindForecast_Project/03_Results/third_part_experiments/train_test_split.json'
+G-M3-Fixed,GFS固定权重融合(基于SHAP),fusion,,,[Errno 2] No such file or directory: '/Users/xiaxin/work/WindForecast_Project/03_Results/third_part_experiments/train_test_split.json'
+G-M3-TimeAdaptive,GFS昼夜动态权重融合(基于SHAP),fusion,,,[Errno 2] No such file or directory: '/Users/xiaxin/work/WindForecast_Project/03_Results/third_part_experiments/train_test_split.json'
+E-M3-Fixed,EC固定权重融合(基于SHAP),fusion,,,[Errno 2] No such file or directory: '/Users/xiaxin/work/WindForecast_Project/03_Results/third_part_experiments/train_test_split.json'
+E-M3-TimeAdaptive,EC昼夜动态权重融合(基于SHAP),fusion,,,[Errno 2] No such file or directory: '/Users/xiaxin/work/WindForecast_Project/03_Results/third_part_experiments/train_test_split.json'
+Fusion-M1,联合校正后静态融合,fusion,,,[Errno 2] No such file or directory: '/Users/xiaxin/work/WindForecast_Project/03_Results/third_part_experiments/train_test_split.json'
+Fusion-M2,ML校正后无数据泄露的权重优化融合,no_leakage_fusion,,,[Errno 2] No such file or directory: '/Users/xiaxin/work/WindForecast_Project/03_Results/third_part_experiments/train_test_split.json'

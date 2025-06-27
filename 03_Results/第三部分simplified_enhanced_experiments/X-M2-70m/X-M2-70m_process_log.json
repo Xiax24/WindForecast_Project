@@ -1,0 +1,44 @@
+{
+  "experiment_name": "X-M2-70m",
+  "experiment_config": {
+    "name": "X-M2-70m",
+    "description": "GFS\u548cEC\u768470m\u5206\u522b\u6821\u6b63\u540e\u5747\u6743\u878d\u5408",
+    "type": "cross_source_corrected_fusion",
+    "height": "70m",
+    "sources": [
+      "gfs",
+      "ec"
+    ],
+    "fusion_weights": [
+      0.5,
+      0.5
+    ]
+  },
+  "correction_stats": {
+    "gfs_70m": {
+      "rmse": 2.358672646893372,
+      "correlation": 0.689198452362079
+    },
+    "ec_70m": {
+      "rmse": 2.3116047115116163,
+      "correlation": 0.7042195908346932
+    }
+  },
+  "fusion_weights": [
+    0.5,
+    0.5
+  ],
+  "processing_log": [
+    "\u8de8\u6e90\u6821\u6b63\u878d\u5408\u8bd5\u9a8c: X-M2-70m",
+    "\u6570\u636e\u5927\u5c0f: 52317",
+    "gfs_70m\u6821\u6b63\u6027\u80fd: RMSE=2.3587",
+    "ec_70m\u6821\u6b63\u6027\u80fd: RMSE=2.3116",
+    "gfs_70m\u6743\u91cd: 0.5",
+    "ec_70m\u6743\u91cd: 0.5",
+    "\u6700\u7ec8\u6d4b\u8bd5\u6027\u80fd: RMSE=32.0844, \u76f8\u5173\u7cfb\u6570=0.6528"
+  ],
+  "final_performance": {
+    "rmse": 32.08443879109785,
+    "correlation": 0.6528346354395517
+  }
+}

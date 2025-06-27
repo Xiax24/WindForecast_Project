@@ -1,0 +1,44 @@
+{
+  "experiment_name": "G-M4-Dual",
+  "experiment_config": {
+    "name": "G-M4-Dual",
+    "description": "GFS\u4e24\u9ad8\u5ea6\u5206\u522b\u6821\u6b63\u540e\u5747\u6743\u878d\u5408",
+    "type": "dual_height_corrected_fusion",
+    "source": "gfs",
+    "heights": [
+      "10m",
+      "70m"
+    ],
+    "fusion_weights": [
+      0.5,
+      0.5
+    ]
+  },
+  "correction_stats": {
+    "gfs_10m": {
+      "rmse": 1.9408000325327006,
+      "correlation": 0.7190112774136034
+    },
+    "gfs_70m": {
+      "rmse": 2.358672646893372,
+      "correlation": 0.689198452362079
+    }
+  },
+  "fusion_weights": [
+    0.5,
+    0.5
+  ],
+  "processing_log": [
+    "\u53cc\u9ad8\u5ea6\u6821\u6b63\u878d\u5408\u8bd5\u9a8c: G-M4-Dual",
+    "\u6570\u636e\u5927\u5c0f: 52317",
+    "gfs_10m\u6821\u6b63\u6027\u80fd: RMSE=1.9408",
+    "gfs_70m\u6821\u6b63\u6027\u80fd: RMSE=2.3587",
+    "gfs_10m\u6743\u91cd: 0.5",
+    "gfs_70m\u6743\u91cd: 0.5",
+    "\u6700\u7ec8\u6d4b\u8bd5\u6027\u80fd: RMSE=32.7592, \u76f8\u5173\u7cfb\u6570=0.6279"
+  ],
+  "final_performance": {
+    "rmse": 32.759196957719006,
+    "correlation": 0.6278929053606219
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "experiment_name": "G-M2-10m",
+  "experiment_config": {
+    "name": "G-M2-10m",
+    "description": "GFS 10m\u98ce\u901f\u4e24\u6b65\u6cd5ML\u6821\u6b63",
+    "type": "two_step",
+    "wind_source": "gfs",
+    "wind_height": "10m"
+  },
+  "processing_log": [
+    "\u8bd5\u9a8c\u7c7b\u578b: two_step",
+    "\u521d\u59cb\u6e05\u7406\u540e\u6570\u636e\u5927\u5c0f: 52317 (\u5728\u7279\u5b9a\u8bd5\u9a8c\u6e05\u7406\u524d)",
+    "\u4e24\u6b65\u6cd5\u6821\u6b63: GFS-10m",
+    "'G-M2-10m' \u8bd5\u9a8c\u7279\u5b9a\u6e05\u7406\u540e\u6570\u636e\u5927\u5c0f: 52317",
+    "\u98ce\u901f\u6821\u6b63\u6a21\u578b\u8f93\u5165\u7279\u5f81 (M2): ['forecast_wind', 'forecast_wind_2', 'other_height_wind', 'wind_shear', 'temperature', 'hour', 'month', 'is_daytime', 'wind_lag_1h', 'wind_lag_24h', 'wind_24h_mean']",
+    "\u98ce\u901f\u6821\u6b63\u6027\u80fd: RMSE=1.9032",
+    "\u529f\u7387\u9884\u6d4b\u6a21\u578b\u8f93\u5165\u7279\u5f81 (M2): ['wind', 'wind_2', 'wind_3', 'hour', 'month', 'is_daytime', 'wind_lag_1h', 'wind_lag_24h']",
+    "\u529f\u7387\u9884\u6d4b\u6027\u80fd: RMSE=32.9029"
+  ],
+  "final_performance": {
+    "rmse": 32.90289491109312,
+    "correlation": 0.6264989293789386
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "analysis_info": {
+    "standardization": true,
+    "n_samples": 52317,
+    "n_heights": 4,
+    "height_columns": [
+      "obs_wind_speed_10m",
+      "obs_wind_speed_30m",
+      "obs_wind_speed_50m",
+      "obs_wind_speed_70m"
+    ],
+    "time_range": {
+      "start": "2021-05-01 00:00:00",
+      "end": "2022-10-31 23:45:00"
+    }
+  },
+  "eof_statistics": {
+    "explained_variance_ratio": [
+      0.9410858517358812,
+      0.04547145724493596,
+      0.009554630742038717,
+      0.0038880602771442004
+    ],
+    "total_variance_explained": 100.00000000000003,
+    "eof1_variance_percent": 94.10858517358812
+  },
+  "profile_statistics": {
+    "mean_profile": [
+      5.587740409427146,
+      6.399672955253551,
+      6.603895292161248,
+      6.750750043007053
+    ],
+    "std_profile": [
+      2.731724713507316,
+      2.7193873588902733,
+      3.0578329644686857,
+      3.170472841386555
+    ]
+  },
+  "eof1_analysis": {
+    "spatial_coefficients": {
+      "obs_wind_speed_10m": 0.47798832764492405,
+      "obs_wind_speed_30m": 0.507071264247763,
+      "obs_wind_speed_50m": 0.5093287052068546,
+      "obs_wind_speed_70m": 0.5049655054176407
+    },
+    "timeseries_stats": {
+      "mean": -8.692152663311431e-18,
+      "std": 1.9401915902671898,
+      "min": -4.34622191578393,
+      "max": 11.667862217375918
+    }
+  }
+}

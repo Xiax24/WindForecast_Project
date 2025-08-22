@@ -1,4 +1,0 @@
-Variable,RMSE,MAE,Correlation,Explained_Variance,Max_Reconstruction_Error
-obs_wind_speed_10m,0.1016,0.0809,0.9993,99.8616,0.4265
-obs_wind_speed_70m,0.1064,0.0849,0.9994,99.8873,0.4718
-power,23.4883,23.3897,0.9989,99.7884,30.5627

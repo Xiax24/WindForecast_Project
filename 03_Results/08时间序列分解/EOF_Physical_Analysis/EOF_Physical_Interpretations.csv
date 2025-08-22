@@ -1,5 +1,0 @@
-mode,pattern_values,height_correlation,type,meaning,physics
-1,[0.47798833 0.50707126 0.50932871 0.50496551],0.7318182294813071,uniform,Overall wind speed intensity change (all heights vary together),Synoptic-scale weather systems or diurnal heating effects
-2,[-0.87686393  0.23991086  0.26707868  0.31972081],0.8090227756395909,positive_shear,Upper levels increase more than lower levels,Stable stratification or decoupling of upper/lower atmosphere
-3,[ 0.05080181 -0.69600684 -0.06217345  0.71353214],0.5863052519870935,positive_shear,Upper levels increase more than lower levels,Stable stratification or decoupling of upper/lower atmosphere
-4,[-0.00748178 -0.44821422  0.81571301 -0.36559585],0.04239266995348975,complex,Complex vertical structure,Multiple competing atmospheric processes

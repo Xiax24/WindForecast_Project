@@ -1,0 +1,36 @@
+Variable,IMF,Period_Minutes,Period_Hours,Period_Days,Dominant_Frequency_Hz,FFT_Period_Hours,Zero_Crossing_Period_Hours,Peak_Interval_Period_Hours,AutoCorr_Period_Hours,Time_Scale,Representative_Description,Is_Trend
+obs_wind_speed_10m,1,73.39405704046588,1.2232342840077648,0.0509680951669902,0.00022708468967013888,1.2232342840077648,0.9219504458464033,2.5,inf,Hourly,1.2 hours - Intra-daily variation,False
+obs_wind_speed_10m,2,174.66950959488273,2.9111584932480454,0.12129827055200189,9.541829427083333e-05,2.9111584932480454,2.365358531512795,5.5,inf,Hourly,2.9 hours - Intra-daily variation,False
+obs_wind_speed_10m,3,480.46920821114367,8.007820136852395,0.3336591723688498,3.4688313802083335e-05,8.007820136852395,6.188431511710433,13.0,inf,Semi-diurnal,8.0 hours - Intra-daily variation,False
+obs_wind_speed_10m,4,inf,inf,inf,0.0,inf,inf,inf,inf,Long-term Trend,Long-term trend/monotonic component,True
+obs_wind_speed_10m,5,inf,inf,inf,0.0,inf,inf,inf,inf,Long-term Trend,Long-term trend/monotonic component,True
+obs_wind_speed_10m,6,inf,inf,inf,0.0,inf,inf,inf,inf,Long-term Trend,Long-term trend/monotonic component,True
+obs_wind_speed_10m,7,inf,inf,inf,0.0,inf,inf,inf,inf,Long-term Trend,Long-term trend/monotonic component,True
+obs_wind_speed_10m,8,inf,inf,inf,0.0,inf,inf,inf,inf,Long-term Trend,Long-term trend/monotonic component,True
+obs_wind_speed_10m,9,inf,inf,inf,0.0,inf,inf,inf,inf,Long-term Trend,Long-term trend/monotonic component,True
+obs_wind_speed_10m,10,inf,inf,inf,0.0,inf,inf,inf,inf,Long-term Trend,Long-term trend/monotonic component,True
+obs_wind_speed_10m,11,inf,inf,inf,0.0,inf,inf,inf,inf,Long-term Trend,Long-term trend/monotonic component,True
+obs_wind_speed_10m,12,inf,inf,inf,0.0,inf,inf,inf,inf,Long-term Trend,Long-term trend/monotonic component,True
+obs_wind_speed_70m,1,72.19741480611046,1.2032902467685076,0.05013709361535448,0.00023084852430555556,1.2032902467685076,0.9163951655281135,2.0,inf,Hourly,1.2 hours - Intra-daily variation,False
+obs_wind_speed_70m,2,200.41590214067278,3.34026503567788,0.13917770981991165,8.3160400390625e-05,3.34026503567788,2.3950283830800223,6.0,inf,Several Hours,3.3 hours - Intra-daily variation,False
+obs_wind_speed_70m,3,480.46920821114367,8.007820136852395,0.3336591723688498,3.4688313802083335e-05,8.007820136852395,6.2745262652914375,12.5,inf,Semi-diurnal,8.0 hours - Intra-daily variation,False
+obs_wind_speed_70m,4,inf,inf,inf,0.0,inf,inf,inf,inf,Long-term Trend,Long-term trend/monotonic component,True
+obs_wind_speed_70m,5,inf,inf,inf,0.0,inf,inf,inf,inf,Long-term Trend,Long-term trend/monotonic component,True
+obs_wind_speed_70m,6,inf,inf,inf,0.0,inf,inf,inf,inf,Long-term Trend,Long-term trend/monotonic component,True
+obs_wind_speed_70m,7,inf,inf,inf,0.0,inf,inf,inf,inf,Long-term Trend,Long-term trend/monotonic component,True
+obs_wind_speed_70m,8,inf,inf,inf,0.0,inf,inf,inf,inf,Long-term Trend,Long-term trend/monotonic component,True
+obs_wind_speed_70m,9,inf,inf,inf,0.0,inf,inf,inf,inf,Long-term Trend,Long-term trend/monotonic component,True
+obs_wind_speed_70m,10,inf,inf,inf,0.0,inf,inf,inf,inf,Long-term Trend,Long-term trend/monotonic component,True
+obs_wind_speed_70m,11,inf,inf,inf,0.0,inf,inf,inf,inf,Long-term Trend,Long-term trend/monotonic component,True
+obs_wind_speed_70m,12,inf,inf,inf,0.0,inf,inf,inf,inf,Long-term Trend,Long-term trend/monotonic component,True
+power,1,62.57415658816041,1.0429026098026735,0.04345427540844473,0.0002663506401909722,1.0429026098026735,0.991565899700542,3.0,inf,Hourly,1.0 hours - Intra-daily variation,False
+power,2,213.28704708179646,3.554784118029941,0.1481160049179142,7.814195421006945e-05,3.554784118029941,2.391306335131182,6.0,inf,Several Hours,3.6 hours - Intra-daily variation,False
+power,3,480.2344894968246,8.00390815828041,0.33349617326168374,3.4705268012152775e-05,8.00390815828041,6.729740159506046,14.5,inf,Semi-diurnal,8.0 hours - Intra-daily variation,False
+power,4,inf,inf,inf,0.0,inf,inf,inf,inf,Long-term Trend,Long-term trend/monotonic component,True
+power,5,inf,inf,inf,0.0,inf,inf,inf,inf,Long-term Trend,Long-term trend/monotonic component,True
+power,6,inf,inf,inf,0.0,inf,inf,inf,inf,Long-term Trend,Long-term trend/monotonic component,True
+power,7,inf,inf,inf,0.0,inf,inf,inf,inf,Long-term Trend,Long-term trend/monotonic component,True
+power,8,inf,inf,inf,0.0,inf,inf,inf,inf,Long-term Trend,Long-term trend/monotonic component,True
+power,9,inf,inf,inf,0.0,inf,inf,inf,inf,Long-term Trend,Long-term trend/monotonic component,True
+power,10,inf,inf,inf,0.0,inf,inf,inf,inf,Long-term Trend,Long-term trend/monotonic component,True
+power,11,inf,inf,inf,0.0,inf,inf,inf,inf,Long-term Trend,Long-term trend/monotonic component,True

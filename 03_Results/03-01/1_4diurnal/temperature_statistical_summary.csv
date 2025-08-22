@@ -1,0 +1,2 @@
+variable,mean,std,min,max,day_mean,night_mean,day_night_diff,peak_hour,trough_hour,diurnal_range
+obs_temperature_10m,14.151944014373916,11.95930948515357,-18.28,36.82,14.950355340696566,13.20832158645425,1.7420337542423159,17,6,8.624453858607666

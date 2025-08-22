@@ -1,0 +1,14 @@
+Feature,Importance,Importance_Type
+obs_wind_speed_10m,0.5989430388516965,Traditional
+obs_wind_speed_50m,0.13497424933762947,Traditional
+obs_wind_speed_70m,0.08153038515291575,Traditional
+obs_temperature_10m,0.05225955945965793,Traditional
+obs_wind_speed_30m,0.029368455111540872,Traditional
+obs_wind_dir_cos_50m,0.01602890312668706,Traditional
+obs_wind_dir_sin_10m,0.013742838597522195,Traditional
+obs_wind_dir_cos_10m,0.012800361538188547,Traditional
+obs_wind_dir_cos_70m,0.012578014273288862,Traditional
+obs_wind_dir_sin_70m,0.01231857054065861,Traditional
+obs_wind_dir_cos_30m,0.012318120938203583,Traditional
+obs_wind_dir_sin_50m,0.012259855329172493,Traditional
+obs_wind_dir_sin_30m,0.010877647742838094,Traditional

@@ -1,5 +1,0 @@
-variable,season,EC_RMSE,GFS_RMSE,unit,var_type
-Air Density 10m,Spring,0.4452197389481006,0.44381310471338065,kg/m³,Air_Density
-Air Density 10m,Summer,0.3313432826786159,0.32971524677197894,kg/m³,Air_Density
-Air Density 10m,Autumn,0.3715544230908962,0.367735951211066,kg/m³,Air_Density
-Air Density 10m,Winter,0.5837355442400103,0.5785264712018966,kg/m³,Air_Density

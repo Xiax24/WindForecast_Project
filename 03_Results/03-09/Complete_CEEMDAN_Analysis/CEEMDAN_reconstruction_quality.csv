@@ -1,0 +1,4 @@
+Variable,RMSE,NRMSE_percent,MAE,NMAE_percent,Correlation,Explained_Variance_percent,Max_Error,Signal_to_Noise_Ratio
+obs_wind_speed_10m,0.0669,2.4477,0.0534,0.9565,0.9997,99.9401,0.2904,32.2249
+obs_wind_speed_70m,0.0817,2.5772,0.0651,0.9646,0.9997,99.9336,0.343,31.7769
+power,1.6021,3.4272,1.2955,2.7414,0.9996,99.9238,5.8973,29.3013

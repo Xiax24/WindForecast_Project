@@ -1,0 +1,16 @@
+experiment,description,type,RMSE,Correlation
+Fusion-M1,（GFS-10m → 校正 + EC-10m  → 校正 + GFS-70m → 校正 + EC-70m  → 校正）→ 预测功率,fusion,31.80 ,0.66 
+X-M2-10m,（GFS-10m → 校正 + EC-10m  → 校正）→ 预测功率,cross_source_corrected_fusion,32.03 ,0.66 
+X-M3-10m,平均（GFS-10m  + EC-10m ）  → 校正  → 预测功率,cross_source_average_corrected,32.34 ,0.65 
+X-M2-70m,（GFS-70m → 校正 + EC-70m  → 校正）→ 预测功率,cross_source_corrected_fusion,32.33 ,0.65 
+E-M1-10m,EC 10m→ 预测功率,direct,33.15 ,0.63 
+E-M2-10m,EC 10m  → 校正→ 预测功率,two_step,33.16 ,0.63 
+G-M4-Dual,（GFS-10m → 校正 + GFS-70m → 校正 ）→ 预测功率,dual_height_corrected_fusion,32.67 ,0.63 
+G-M2-10m,GFS 10m → 校正→ 预测功率,two_step,32.90 ,0.63 
+X-M3-70m,平均（GFS-70m  + EC-70m ）  → 校正  → 预测功率,cross_source_average_corrected,32.93 ,0.62 
+E-M4-Dual,（EC-10m → 校正 + EC-70m → 校正）→ 预测功率,dual_height_corrected_fusion,33.32 ,0.62 
+G-M2-70m, GFS 70m → 校正→ 预测功率,two_step,32.80 ,0.62 
+E-M1-70m,EC 70m→ 预测功率,direct,33.47 ,0.62 
+G-M1-10m,GFS 10m→ 预测功率,direct,33.76 ,0.61 
+E-M2-70m,EC 70m → 校正→ 预测功率,two_step,33.71 ,0.61 
+G-M1-70m,GFS 70m→ 预测功率,direct,34.24 ,0.59 

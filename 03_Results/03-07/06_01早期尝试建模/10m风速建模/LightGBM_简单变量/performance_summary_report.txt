@@ -1,0 +1,23 @@
+
+10m Wind Speed Correction - Performance Summary Report
+=====================================================
+
+Test Dataset Size: 10464 samples
+
+PERFORMANCE COMPARISON:
+-----------------------
+Model               Correlation    RMSE      MAE       R²        Bias
+EC Original         0.5628        2.4156    1.7519    0.0983    0.5138
+GFS Original        0.5512        2.6088    1.9628    -0.0517    0.6960
+LightGBM Corrected 0.6014        2.1342    1.5890    0.2961    0.6512
+
+IMPROVEMENTS vs EC Original:
+----------------------------
+Correlation: +6.9%
+RMSE:        +11.6%
+MAE:         +9.3%
+R²:          +201.3%
+
+CONCLUSION:
+-----------
+The LightGBM correction model shows significant improvement over the original EC forecasts.

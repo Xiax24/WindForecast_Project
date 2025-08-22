@@ -1,0 +1,13 @@
+IMF,obs_wind_speed_10m,obs_wind_speed_70m,power,Time_Scale
+1,1.2h,1.2h,1.0h,Hourly
+2,3.6h,3.3h,3.6h,Several Hours
+3,8.0h,8.0h,8.0h,Semi-diurnal
+4,24.0h,24.0h,24.0h,Daily
+5,2.1d,2.5d,2.5d,Several Days
+6,4.6d,4.2d,4.6d,Several Days
+7,9.9d,9.9d,9.4d,Weekly
+8,21.4d,23.1d,22.2d,Monthly
+9,54.5d,49.5d,68.1d,Seasonal
+10,136.2d,155.7d,136.2d,Seasonal
+11,209.3d,212.9d,11.0d,Seasonal
+12,11.0d,11.0d,1.0h,Monthly

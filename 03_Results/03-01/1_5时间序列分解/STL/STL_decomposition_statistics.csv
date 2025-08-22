@@ -1,0 +1,4 @@
+Variable,RMSE,MAE,Total_Variance,Trend_Variance,Seasonal_Variance,Residual_Variance,Trend_Variance_Ratio,Seasonal_Variance_Ratio,Residual_Variance_Ratio
+obs_wind_speed_10m,0.0,0.0,7.4623,3.1203,1.103,1.8428,41.814,14.7806,24.6945
+obs_wind_speed_70m,0.0,0.0,10.0519,3.9703,1.2942,2.7847,39.4981,12.8754,27.7032
+power,0.0,0.0,2185.3252,1009.8224,237.9877,508.9716,46.2092,10.8903,23.2904

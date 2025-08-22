@@ -1,0 +1,74 @@
+EEMD频率分量对比分析报告
+============================================================
+分析时间: 2025-08-20 20:53:37
+数据源: /Users/xiaxin/work/WindForecast_Project/01_Data/processed/imputed_data/changma_clean.csv
+分析变量: obs_wind_speed_10m, obs_wind_speed_70m, power
+
+1. 分解结果汇总
+------------------------------
+obs_wind_speed_10m:
+  - IMF数量: 12
+  - 数据点数: 52317
+
+obs_wind_speed_70m:
+  - IMF数量: 12
+  - 数据点数: 52317
+
+power:
+  - IMF数量: 11
+  - 数据点数: 52317
+
+2. 能量分布分析
+------------------------------
+obs_wind_speed_10m:
+  - 高频能量占比: 2.0%
+  - 中频能量占比: 12.2%
+  - 低频能量占比: 85.8%
+  - 主导IMF: IMF12
+
+obs_wind_speed_70m:
+  - 高频能量占比: 2.1%
+  - 中频能量占比: 11.2%
+  - 低频能量占比: 86.6%
+  - 主导IMF: IMF12
+
+power:
+  - 高频能量占比: 7.0%
+  - 中频能量占比: 59.5%
+  - 低频能量占比: 33.5%
+  - 主导IMF: IMF11
+
+3. 变量间相关性
+------------------------------
+obs_wind_speed_10m vs obs_wind_speed_70m:
+  - 平均Pearson相关: 0.720
+  - 平均Spearman相关: 0.700
+  - 平均最优滞后: -1.19小时
+
+obs_wind_speed_10m vs power:
+  - 平均Pearson相关: 0.620
+  - 平均Spearman相关: 0.601
+  - 平均最优滞后: 1.96小时
+
+obs_wind_speed_70m vs power:
+  - 平均Pearson相关: 0.594
+  - 平均Spearman相关: 0.561
+  - 平均最优滞后: 2.34小时
+
+4. 主要发现
+------------------------------
+- power 具有最高的总能量
+- obs_wind_speed_70m 的IMF整体最稳定
+- obs_wind_speed_10m 和 obs_wind_speed_70m 在IMF11上相关性最强 (r=0.979)
+
+5. 生成文件列表
+------------------------------
+- IMF_characteristics_detailed.csv - 详细IMF特征
+- Variable_summary.csv - 变量汇总统计
+- Frequency_comparison.png - 频率特征对比图
+- IMF_comparison.png - IMF时间序列对比图
+- Cross_correlations.csv - 互相关分析
+- Correlation_analysis.png - 相关性分析图
+- EEMD_decomposition_obs_wind_speed_10m.png - obs_wind_speed_10m分解图
+- EEMD_decomposition_obs_wind_speed_70m.png - obs_wind_speed_70m分解图
+- EEMD_decomposition_power.png - power分解图

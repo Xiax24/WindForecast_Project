@@ -1,0 +1,121 @@
+观测-WRF数据匹配分析总体报告 (修正版)
+============================================================
+
+处理时间: 2025-05-22 17:48:56
+处理站点数: 3
+
+数据处理说明:
+  - 温度单位: 开尔文(K) → 摄氏度(°C)
+  - 密度计算: 从WRF温度和气压重新计算
+  - 风向计算: 从u/v分量计算
+  - 时间对齐: 观测与WRF数据精确匹配
+
+=== changma 站点结果摘要 ===
+主要风速变量:
+  wind_speed_10m:
+    样本数: 52251
+    EC  - RMSE: 2.356, CORR: 0.611
+    GFS - RMSE: 2.442, CORR: 0.606
+    更优模式: EC (改善 3.5%)
+
+  wind_speed_30m:
+    样本数: 52265
+    EC  - RMSE: 2.594, CORR: 0.610
+    GFS - RMSE: 2.701, CORR: 0.591
+    更优模式: EC (改善 3.9%)
+
+  wind_speed_50m:
+    样本数: 52265
+    EC  - RMSE: 2.886, CORR: 0.604
+    GFS - RMSE: 3.030, CORR: 0.576
+    更优模式: EC (改善 4.7%)
+
+  wind_speed_70m:
+    样本数: 52267
+    EC  - RMSE: 3.155, CORR: 0.592
+    GFS - RMSE: 3.347, CORR: 0.555
+    更优模式: EC (改善 5.7%)
+
+其他变量:
+  wind_direction_10m: EC 更优 (RMSE改善 2.1%)
+  wind_direction_30m: GFS 更优 (RMSE改善 3.2%)
+  wind_direction_50m: EC 更优 (RMSE改善 0.4%)
+  wind_direction_70m: EC 更优 (RMSE改善 1.4%)
+  temperature_10m: GFS 更优 (RMSE改善 1.5%)
+  density_10m: GFS 更优 (RMSE改善 0.4%)
+
+总体表现:
+  EC更优变量数: 7/10 (70.0%)
+  GFS更优变量数: 3/10 (30.0%)
+  推荐: 该站点优先使用 EC-WRF
+
+----------------------------------------
+=== kuangqu 站点结果摘要 ===
+主要风速变量:
+  wind_speed_30m:
+    样本数: 37196
+    EC  - RMSE: 2.791, CORR: 0.601
+    GFS - RMSE: 2.772, CORR: 0.586
+    更优模式: GFS (改善 0.7%)
+
+  wind_speed_50m:
+    样本数: 37196
+    EC  - RMSE: 2.915, CORR: 0.613
+    GFS - RMSE: 2.886, CORR: 0.605
+    更优模式: GFS (改善 1.0%)
+
+  wind_speed_70m:
+    样本数: 37196
+    EC  - RMSE: 3.167, CORR: 0.609
+    GFS - RMSE: 3.174, CORR: 0.593
+    更优模式: EC (改善 0.2%)
+
+其他变量:
+  wind_direction_30m: EC 更优 (RMSE改善 0.4%)
+  wind_direction_50m: GFS 更优 (RMSE改善 0.5%)
+  wind_direction_70m: GFS 更优 (RMSE改善 0.2%)
+
+总体表现:
+  EC更优变量数: 2/6 (33.3%)
+  GFS更优变量数: 4/6 (66.7%)
+  推荐: 该站点优先使用 GFS-WRF
+
+----------------------------------------
+=== sanlijijingzi 站点结果摘要 ===
+主要风速变量:
+  wind_speed_10m:
+    样本数: 29966
+    EC  - RMSE: 2.208, CORR: 0.646
+    GFS - RMSE: 2.285, CORR: 0.642
+    更优模式: EC (改善 3.4%)
+
+  wind_speed_30m:
+    样本数: 31047
+    EC  - RMSE: 2.383, CORR: 0.633
+    GFS - RMSE: 2.438, CORR: 0.630
+    更优模式: EC (改善 2.3%)
+
+  wind_speed_50m:
+    样本数: 30842
+    EC  - RMSE: 2.493, CORR: 0.652
+    GFS - RMSE: 2.545, CORR: 0.644
+    更优模式: EC (改善 2.1%)
+
+  wind_speed_70m:
+    样本数: 30763
+    EC  - RMSE: 2.660, CORR: 0.662
+    GFS - RMSE: 2.739, CORR: 0.650
+    更优模式: EC (改善 2.9%)
+
+其他变量:
+  wind_direction_10m: EC 更优 (RMSE改善 1.4%)
+  wind_direction_30m: GFS 更优 (RMSE改善 1.3%)
+  wind_direction_50m: GFS 更优 (RMSE改善 3.0%)
+  wind_direction_70m: EC 更优 (RMSE改善 2.9%)
+
+总体表现:
+  EC更优变量数: 6/8 (75.0%)
+  GFS更优变量数: 2/8 (25.0%)
+  推荐: 该站点优先使用 EC-WRF
+
+----------------------------------------

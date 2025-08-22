@@ -1,0 +1,37 @@
+Variable,IMF,Mean,Std,Energy,Energy_Ratio,Zero_Crossings,ZC_Period_Points,ZC_Period_Hours,FFT_Period_Hours,Interpretation
+obs_wind_speed_10m,1,-0.0015,0.3617,6844.9026,0.3537,30573,3.4224,0.8556,1.0667,High-frequency noise/turbulence
+obs_wind_speed_10m,2,-0.0016,0.4133,8935.4488,0.4618,11221,9.3248,2.3312,3.4266,High-frequency noise/turbulence
+obs_wind_speed_10m,3,0.0044,0.6507,22151.8858,1.1448,4219,24.8007,6.2002,11.9993,Sub-daily patterns/local effects
+obs_wind_speed_10m,4,-0.0208,1.0804,61086.097,3.1569,1599,65.4371,16.3593,23.9986,Diurnal and semi-diurnal cycles
+obs_wind_speed_10m,5,-0.0109,1.1191,65532.5145,3.3867,649,161.2234,40.3059,50.3048,Multi-day weather patterns
+obs_wind_speed_10m,6,-0.0107,1.0213,54575.6176,2.8204,258,405.5581,101.3895,113.7326,Multi-day weather patterns
+obs_wind_speed_10m,7,0.0075,0.7781,31678.947,1.6372,108,968.8333,242.2083,207.6071,Weekly to monthly cycles
+obs_wind_speed_10m,8,0.0014,0.4976,12955.4843,0.6695,51,2051.6471,512.9118,523.17,Weekly to monthly cycles
+obs_wind_speed_10m,9,0.0045,0.3895,7938.7709,0.4103,20,5231.7,1307.925,1634.9062,Seasonal patterns
+obs_wind_speed_10m,10,-0.0017,0.2083,2269.2161,0.1173,8,13079.25,3269.8125,4359.75,Seasonal patterns
+obs_wind_speed_10m,11,-0.0154,0.1187,750.1611,0.0388,5,20926.8,5231.7,6539.625,Seasonal patterns
+obs_wind_speed_10m,12,5.6323,0.1096,1660279.5796,85.8026,0,inf,inf,13079.25,Long-term trends/climate patterns
+obs_wind_speed_70m,1,-0.0002,0.4411,10179.9414,0.3684,30700,3.4083,0.8521,1.2134,High-frequency noise/turbulence
+obs_wind_speed_70m,2,0.0002,0.5195,14118.9003,0.5109,11110,9.418,2.3545,2.6584,High-frequency noise/turbulence
+obs_wind_speed_70m,3,0.0059,0.8039,33812.863,1.2236,4137,25.2922,6.3231,8.5709,Sub-daily patterns/local effects
+obs_wind_speed_70m,4,-0.0097,1.217,77488.7891,2.8042,1593,65.6836,16.4209,23.9986,Diurnal and semi-diurnal cycles
+obs_wind_speed_70m,5,-0.0006,1.3834,100129.1253,3.6235,644,162.4752,40.6188,50.3048,Multi-day weather patterns
+obs_wind_speed_70m,6,0.0032,1.1577,70124.2644,2.5377,260,402.4385,100.6096,122.236,Multi-day weather patterns
+obs_wind_speed_70m,7,0.0053,0.8069,34063.5804,1.2327,108,968.8333,242.2083,297.2557,Weekly to monthly cycles
+obs_wind_speed_70m,8,-0.01,0.558,16297.6932,0.5898,49,2135.3878,533.8469,523.17,Weekly to monthly cycles
+obs_wind_speed_70m,9,0.0209,0.3753,7393.0037,0.2675,23,4549.3043,1137.3261,1868.4643,Seasonal patterns
+obs_wind_speed_70m,10,-0.0099,0.2325,2834.0433,0.1026,6,17439.0,4359.75,4359.75,Seasonal patterns
+obs_wind_speed_70m,11,-0.02,0.1663,1467.1049,0.0531,5,20926.8,5231.7,4359.75,Seasonal patterns
+obs_wind_speed_70m,12,6.7657,0.1126,2395444.0089,86.6861,0,inf,inf,13079.25,Long-term trends/climate patterns
+power,1,0.0097,3.9339,809633.9412,0.3894,29347,3.5654,0.8914,1.0747,High-frequency noise/turbulence
+power,2,-0.0393,5.8411,1785070.8003,0.8586,11305,9.2556,2.3139,3.5551,High-frequency noise/turbulence
+power,3,-0.1664,10.2736,5523295.7198,2.6567,3971,26.3495,6.5874,8.0044,Sub-daily patterns/local effects
+power,4,-0.6502,16.3936,14082319.4421,6.7735,1585,66.0151,16.5038,23.9986,Diurnal and semi-diurnal cycles
+power,5,-0.4677,20.9293,22928143.2795,11.0283,641,163.2356,40.8089,60.5521,Multi-day weather patterns
+power,6,-0.2011,18.4367,17785277.6667,8.5546,262,399.3664,99.8416,110.8411,Multi-day weather patterns
+power,7,0.0121,13.8038,9968810.1227,4.7949,118,886.7288,221.6822,256.4559,Weekly to monthly cycles
+power,8,-0.1097,9.5757,4797825.2332,2.3077,50,2092.68,523.17,544.9688,Weekly to monthly cycles
+power,9,0.0248,5.7694,1741432.7986,0.8376,18,5813.0,1453.25,1453.25,Seasonal patterns
+power,10,0.4469,5.0035,1320212.004,0.635,7,14947.7143,3736.9286,4359.75,Seasonal patterns
+power,11,-0.7388,2.5425,366757.066,0.1764,5,20926.8,5231.7,6539.625,Seasonal patterns
+power,12,49.1452,2.8837,126793523.9196,60.9871,0,inf,inf,13079.25,Long-term trends/climate patterns

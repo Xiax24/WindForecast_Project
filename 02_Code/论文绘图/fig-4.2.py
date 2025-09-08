@@ -22,10 +22,10 @@ warnings.filterwarnings('ignore')
 # 设置matplotlib参数
 plt.rcParams.update({
     'font.family': ['Arial', 'DejaVu Sans'],
-    'font.size': 12,
+    'font.size': 22,
     'axes.linewidth': 1.2,
-    'figure.dpi': 300,
-    'savefig.dpi': 300,
+    'figure.dpi': 500,
+    'savefig.dpi': 500,
     'savefig.bbox': 'tight',
     'savefig.facecolor': 'white'
 })

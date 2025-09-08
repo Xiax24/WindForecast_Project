@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-按风向分类的SHAP蜂群图分析 - 使用所有特征版本
+按风向分类的SHAP蜂群图分析 - 使用所有特征版本（美化版）
 严格条件：四层风向都必须在同一区间内，70m风速3-25m/s
 使用所有obs_特征进行建模，只生成东西风蜂群图对比
 """
@@ -22,7 +22,7 @@ warnings.filterwarnings('ignore')
 # 设置matplotlib参数
 plt.rcParams.update({
     'font.family': ['Arial', 'DejaVu Sans'],
-    'font.size': 22,
+    'font.size': 25,
     'axes.linewidth': 1.2,
     'figure.dpi': 500,
     'savefig.dpi': 500,
@@ -193,9 +193,9 @@ class WindDirectionSHAPAnalyzer:
         mae = mean_absolute_error(y_test, y_pred)
         
         print(f"{wind_type}模型性能:")
-        print(f"  R²: {r2:.3f}")
-        print(f"  RMSE: {rmse:.3f} kW")
-        print(f"  MAE: {mae:.3f} kW")
+        print(f"  R²: {r2:.2f}")
+        print(f"  RMSE: {rmse:.2f} kW")
+        print(f"  MAE: {mae:.2f} kW")
         
         # 计算SHAP值
         explainer = shap.TreeExplainer(model)
@@ -225,11 +225,15 @@ class WindDirectionSHAPAnalyzer:
         }
     
     def create_dual_beeswarm_plot(self, east_results, west_results):
-        """创建东西风的双蜂群图对比"""
+        """创建东西风的双蜂群图对比 - 美化版本"""
         print("\n=== 创建双蜂群图对比 ===")
         
-        # 创建图形
-        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(20, 10))
+        # 创建图形，为colorbar留出空间
+        fig = plt.figure(figsize=(22, 10))
+        
+        # 创建子图，为colorbar预留空间
+        ax1 = plt.subplot(1, 2, 1)
+        ax2 = plt.subplot(1, 2, 2)
         
         # 获取特征名称并处理显示
         east_features = east_results['feature_names']
@@ -251,41 +255,68 @@ class WindDirectionSHAPAnalyzer:
         west_display_names = [create_display_name(name) for name in west_features]
         
         # 绘制东风蜂群图
-        self._plot_beeswarm(ax1, east_results, "East Wind (NE-SE: 45°-135°)", east_display_names)
+        scatter1 = self._plot_beeswarm_improved(ax1, east_results, "(a) East Wind (NE-SE: 45°-135°)", 
+                                               east_display_names, is_left_plot=True)
         
         # 绘制西风蜂群图  
-        self._plot_beeswarm(ax2, west_results, "West Wind (NW-SW: 225°-315°)", west_display_names)
+        scatter2 = self._plot_beeswarm_improved(ax2, west_results, "(b) West Wind (NW-SW: 225°-315°)", 
+                                               west_display_names, is_left_plot=False)
         
-        # 调整布局
-        plt.tight_layout()
+        # 添加颜色条 - 修复颜色映射
+        # 创建一个标准化的映射范围 [0, 1] 对应 RdBu_r 颜色映射
+        import matplotlib.cm as cm
+        import matplotlib.colors as mcolors
         
-        # 添加总标题
-        fig.suptitle('SHAP Feature Importance Analysis: East vs West Wind Conditions', 
-                    fontsize=16, fontweight='bold', y=0.98)
+        # 在右侧子图右边添加colorbar
+        cbar_ax = fig.add_axes([0.92, 0.15, 0.02, 0.7])  # [left, bottom, width, height]
+        
+        # 创建正确的颜色映射
+        norm = mcolors.Normalize(vmin=0, vmax=1)
+        sm = cm.ScalarMappable(norm=norm, cmap='RdBu_r')
+        sm.set_array([])
+        
+        cbar = plt.colorbar(sm, cax=cbar_ax)
+        
+        # 将标题放在colorbar的左侧
+        cbar.ax.text(-0.8, 0.5, 'Normalized Feature Value', 
+                     transform=cbar.ax.transAxes, fontsize=22, fontweight='normal',
+                     rotation=90, va='center', ha='center')
+        
+        cbar.ax.tick_params(labelsize=16)
+        
+        # 设置colorbar的刻度标签
+        cbar.set_ticks([0, 0.5, 1])
+        cbar.set_ticklabels(['Low', 'Medium', 'High'], fontsize=22, fontweight='normal')
+        
+        # 调整子图位置，为colorbar留出空间
+        plt.subplots_adjust(left=0.08, right=0.90, top=0.92, bottom=0.12, wspace=0.25)
         
         # 保存图形
         save_path = self.results_path / 'wind_direction_beeswarm_comparison.png'
-        plt.savefig(save_path, dpi=300, bbox_inches='tight', facecolor='white')
-        plt.savefig(save_path.with_suffix('.pdf'), dpi=300, bbox_inches='tight', facecolor='white')
+        plt.savefig(save_path, dpi=600, bbox_inches='tight', facecolor='white')
+        plt.savefig(save_path.with_suffix('.pdf'), dpi=600, bbox_inches='tight', facecolor='white')
         
         print(f"蜂群图已保存到: {save_path}")
         print(f"东风模型使用了 {len(east_features)} 个特征")
         print(f"西风模型使用了 {len(west_features)} 个特征")
         plt.show()
     
-    def _plot_beeswarm(self, ax, results, title, display_names):
-        """绘制单个蜂群图"""
+    def _plot_beeswarm_improved(self, ax, results, title, display_names, is_left_plot=False):
+        """绘制单个蜂群图 - 美化版本"""
         shap_values = results['shap_values']
         X_sample = results['X_sample'] 
         performance = results['performance']
         feature_names = results['feature_names']
         
-        # 计算特征重要性排序，选择前15个最重要的特征
+        # 计算特征重要性排序，选择前10个最重要的特征
         importance = np.abs(shap_values).mean(0)
-        top_indices = np.argsort(importance)[-15:]  # 选择前15个最重要的特征
+        top_indices = np.argsort(importance)[-10:]  # 选择前10个最重要的特征
         
         # 获取对应的显示名称
         top_display_names = [display_names[i] for i in top_indices]
+        
+        # 用于返回的scatter对象
+        scatter = None
         
         # 绘制每个特征的分布
         for plot_idx, feat_idx in enumerate(top_indices):
@@ -306,32 +337,47 @@ class WindDirectionSHAPAnalyzer:
             
             # 绘制散点
             scatter = ax.scatter(shap_vals, y_pos, c=scatter_colors, 
-                               alpha=0.7, s=25, edgecolors='white', linewidth=0.5)
+                               alpha=0.9, s=30, edgecolors='white', linewidth=0.1,
+                               cmap='RdBu_r', vmin=0, vmax=1)
         
         # 设置y轴
         ax.set_yticks(range(len(top_display_names)))
-        ax.set_yticklabels(top_display_names, fontsize=10)
+        ax.set_yticklabels(top_display_names, fontsize=22)
         
-        # 设置x轴和标签
-        ax.set_xlabel('SHAP Value (Impact on Model Output)', fontsize=12, fontweight='bold')
-        ax.set_title(f'{title}\n(R² = {performance["r2"]:.3f}, RMSE = {performance["rmse"]:.1f} kW)\nTop 15 Features', 
-                    fontsize=12, fontweight='bold', pad=20)
+        # 只在左侧子图添加ylabel
+        if is_left_plot:
+            ax.set_ylabel('Top 10 Features', fontsize=25, fontweight='normal')
+        
+        # 设置更学术化的xlabel
+        ax.set_xlabel('SHAP Value', 
+                     fontsize=25, fontweight='normal')
+        
+        # 设置标题（不包含性能指标）
+        ax.set_title(title, fontsize=25, fontweight='normal', pad=10)
+        
+        # 在子图内添加性能指标文本
+        textstr = f'$R^2$ = {performance["r2"]:.3f}\nRMSE = {performance["rmse"]:.1f} kW'
+        
+        # 将文本放在右上角
+        ax.text(0.68, 0.18, textstr, transform=ax.transAxes, fontsize=22,
+               fontweight='normal', va='top', ha='left',
+               bbox=dict(boxstyle='round,pad=0.5', facecolor='white', alpha=0.8, edgecolor='white'))
         
         # 添加零线
-        ax.axvline(x=0, color='black', linestyle='-', alpha=0.8, linewidth=1.5)
+        ax.axvline(x=0, color='black', linestyle='-', alpha=0.8, linewidth=2)
         
         # 美化图表
-        ax.grid(True, alpha=0.3, axis='x')
+        ax.grid(True, alpha=0.3, axis='x', linestyle='--')
         ax.spines['top'].set_visible(False)
         ax.spines['right'].set_visible(False)
+        ax.spines['left'].set_linewidth(1.5)
+        ax.spines['bottom'].set_linewidth(1.5)
         
-        # 添加颜色说明
-        ax.text(0.02, 0.98, 'Feature value:', transform=ax.transAxes, 
-               fontsize=10, fontweight='bold', va='top')
-        ax.text(0.02, 0.94, '● High', transform=ax.transAxes, 
-               color='#d73027', fontsize=10, va='top')
-        ax.text(0.02, 0.90, '● Low', transform=ax.transAxes, 
-               color='#313695', fontsize=10, va='top')
+        # 设置刻度参数
+        ax.tick_params(axis='both', which='major', labelsize=18, width=1.5, length=6)
+        ax.tick_params(axis='both', which='minor', width=1, length=4)
+        
+        return scatter
     
     def run_analysis(self):
         """运行完整分析流程"""

@@ -1,0 +1,101 @@
+sanlijijingzi 匹配数据描述 (修正版)
+============================================================
+
+数据形状: (32327, 48)
+时间范围: 2021-06-01 00:00:00 到 2022-05-06 17:45:00
+数据期间: 339 天
+
+数据单位说明:
+  风速: m/s
+  风向: 度 (°)
+  温度: 摄氏度 (°C) - 已从开尔文转换
+  密度: kg/m³ - 从温度和气压重新计算
+  湿度: % (仅观测数据)
+
+WRF数据处理说明:
+  - 温度: 从tk_30m转换K→°C并外推至10m
+  - 密度: 从tk_30m和p_30m用理想气体定律计算
+  - 风向: 30m和50m从u/v分量计算
+  - 湍流指标: WRF无法提供，设为NaN
+
+变量完整性:
+  obs_wind_speed_10m: 29966/32327 (92.7%)
+  ec_wind_speed_10m: 32327/32327 (100.0%)
+  gfs_wind_speed_10m: 32327/32327 (100.0%)
+  obs_wind_speed_30m: 31047/32327 (96.0%)
+  ec_wind_speed_30m: 32327/32327 (100.0%)
+  gfs_wind_speed_30m: 32327/32327 (100.0%)
+  obs_wind_speed_50m: 30842/32327 (95.4%)
+  ec_wind_speed_50m: 32327/32327 (100.0%)
+  gfs_wind_speed_50m: 32327/32327 (100.0%)
+  obs_wind_speed_70m: 30763/32327 (95.2%)
+  ec_wind_speed_70m: 32327/32327 (100.0%)
+  gfs_wind_speed_70m: 32327/32327 (100.0%)
+  obs_wind_direction_10m: 30986/32327 (95.9%)
+  ec_wind_direction_10m: 32327/32327 (100.0%)
+  gfs_wind_direction_10m: 32327/32327 (100.0%)
+  obs_wind_direction_30m: 30691/32327 (94.9%)
+  ec_wind_direction_30m: 32327/32327 (100.0%)
+  gfs_wind_direction_30m: 32327/32327 (100.0%)
+  obs_wind_direction_50m: 31047/32327 (96.0%)
+  ec_wind_direction_50m: 32327/32327 (100.0%)
+  gfs_wind_direction_50m: 32327/32327 (100.0%)
+  obs_wind_direction_70m: 30998/32327 (95.9%)
+  ec_wind_direction_70m: 32327/32327 (100.0%)
+  gfs_wind_direction_70m: 32327/32327 (100.0%)
+  obs_wind_speed_max_10m: 27847/32327 (86.1%)
+  ec_wind_speed_max_10m: 0/32327 (0.0%)
+  gfs_wind_speed_max_10m: 0/32327 (0.0%)
+  obs_wind_speed_max_30m: 27531/32327 (85.2%)
+  ec_wind_speed_max_30m: 0/32327 (0.0%)
+  gfs_wind_speed_max_30m: 0/32327 (0.0%)
+  obs_wind_speed_max_50m: 27601/32327 (85.4%)
+  ec_wind_speed_max_50m: 0/32327 (0.0%)
+  gfs_wind_speed_max_50m: 0/32327 (0.0%)
+  obs_wind_speed_max_70m: 27596/32327 (85.4%)
+  ec_wind_speed_max_70m: 0/32327 (0.0%)
+  gfs_wind_speed_max_70m: 0/32327 (0.0%)
+  obs_wind_speed_std_10m: 29784/32327 (92.1%)
+  ec_wind_speed_std_10m: 0/32327 (0.0%)
+  gfs_wind_speed_std_10m: 0/32327 (0.0%)
+  obs_wind_speed_std_30m: 30804/32327 (95.3%)
+  ec_wind_speed_std_30m: 0/32327 (0.0%)
+  gfs_wind_speed_std_30m: 0/32327 (0.0%)
+  obs_wind_speed_std_50m: 30622/32327 (94.7%)
+  ec_wind_speed_std_50m: 0/32327 (0.0%)
+  gfs_wind_speed_std_50m: 0/32327 (0.0%)
+  obs_wind_speed_std_70m: 30554/32327 (94.5%)
+  ec_wind_speed_std_70m: 0/32327 (0.0%)
+  gfs_wind_speed_std_70m: 0/32327 (0.0%)
+
+
+功率数据信息:
+  数据行数: 32327
+  时间范围: 2021-06-01 00:00:00 到 2022-05-06 17:45:00
+  数据期间: 339 天
+  单位: kW 或 MW (根据风电场规模)
+
+功率数据完整性:
+  power: 20348/32327 (62.9%)
+
+功率数据统计:
+  计数: 20348
+  平均值: 25.47
+  标准差: 24.56
+  最小值: 0.00
+  25%分位数: 3.65
+  中位数: 17.46
+  75%分位数: 43.47
+  最大值: 93.61
+
+
+基本统计:
+       obs_wind_speed_10m  ec_wind_speed_10m  gfs_wind_speed_10m  obs_wind_speed_30m  ec_wind_speed_30m  gfs_wind_speed_30m  obs_wind_speed_50m  ec_wind_speed_50m  gfs_wind_speed_50m  obs_wind_speed_70m  ec_wind_speed_70m  gfs_wind_speed_70m  obs_wind_direction_10m  ec_wind_direction_10m  gfs_wind_direction_10m  obs_wind_direction_30m  ec_wind_direction_30m  gfs_wind_direction_30m  obs_wind_direction_50m  ec_wind_direction_50m  gfs_wind_direction_50m  obs_wind_direction_70m  ec_wind_direction_70m  gfs_wind_direction_70m  obs_wind_speed_max_10m  ec_wind_speed_max_10m  gfs_wind_speed_max_10m  obs_wind_speed_max_30m  ec_wind_speed_max_30m  gfs_wind_speed_max_30m  obs_wind_speed_max_50m  ec_wind_speed_max_50m  gfs_wind_speed_max_50m  obs_wind_speed_max_70m  ec_wind_speed_max_70m  gfs_wind_speed_max_70m  obs_wind_speed_std_10m  ec_wind_speed_std_10m  gfs_wind_speed_std_10m  obs_wind_speed_std_30m  ec_wind_speed_std_30m  gfs_wind_speed_std_30m  obs_wind_speed_std_50m  ec_wind_speed_std_50m  gfs_wind_speed_std_50m  obs_wind_speed_std_70m  ec_wind_speed_std_70m  gfs_wind_speed_std_70m
+count        29966.000000       32327.000000        32327.000000        31047.000000       32327.000000        32327.000000        30842.000000       32327.000000        32327.000000        30763.000000       32327.000000        32327.000000            30986.000000           32327.000000            32327.000000            30691.000000           32327.000000            32327.000000            31047.000000           32327.000000            32327.000000            30998.000000           32327.000000            32327.000000            27847.000000                    0.0                     0.0            27531.000000                    0.0                     0.0            27601.000000                    0.0                     0.0            27596.000000                    0.0                     0.0            29784.000000                    0.0                     0.0            30804.000000                    0.0                     0.0            30622.000000                    0.0                     0.0            30554.000000                    0.0                     0.0
+mean             4.068614           4.637173            4.816017            5.190311           5.676943            5.897951            5.850494           6.029216            6.264872            6.130094           6.422238            6.662426              190.880422             181.412840              174.348569              160.460048             181.192721              174.416429              147.374254             180.368918              174.434557              182.554779             179.836301              174.464249                5.736977                    NaN                     NaN                6.671935                    NaN                     NaN                7.356787                    NaN                     NaN                7.639092                    NaN                     NaN                0.715151                    NaN                     NaN                0.606285                    NaN                     NaN                0.613989                    NaN                     NaN                0.622325                    NaN                     NaN
+std              2.592994           2.422528            2.413224            2.632811           2.804513            2.766663            2.927579           3.034990            3.000508            3.119751           3.294065            3.261130               89.291413              94.681369               92.631784               82.904153              95.044027               92.970646               76.324018              96.247037               94.095854               95.590381              97.508962               95.184005                3.207610                    NaN                     NaN                3.186449                    NaN                     NaN                3.440982                    NaN                     NaN                3.582794                    NaN                     NaN                0.436972                    NaN                     NaN                0.346091                    NaN                     NaN                0.346610                    NaN                     NaN                0.337516                    NaN                     NaN
+min              0.000000           0.007267            0.049079            0.000000           0.021679            0.042025            0.000000           0.025390            0.034624            0.000000           0.045133            0.016554                0.050000               0.020340                0.054230                0.025000               0.045528                0.030138                0.150000               0.009623                0.008083                0.042411               0.017593                0.101242                0.000000                    NaN                     NaN                0.000000                    NaN                     NaN                0.000000                    NaN                     NaN                0.000000                    NaN                     NaN                0.000000                    NaN                     NaN                0.000000                    NaN                     NaN                0.000000                    NaN                     NaN                0.000000                    NaN                     NaN
+25%              2.163333           2.872289            3.088140            3.300000           3.585765            3.892512            3.713333           3.732397            4.035419            3.776667           3.885080            4.185805               99.800065              90.109697               88.663715               89.613885              90.011969               88.736988               80.092422              89.625433               88.842642               90.380000              88.805887               88.745446                3.390000                    NaN                     NaN                4.170000                    NaN                     NaN                4.940000                    NaN                     NaN                4.950000                    NaN                     NaN                0.386667                    NaN                     NaN                0.350000                    NaN                     NaN                0.366667                    NaN                     NaN                0.380000                    NaN                     NaN
+50%              3.640000           4.265079            4.458735            4.930000           5.545062            5.781408            5.603333           5.858547            6.128114            5.863333           6.239336            6.488415              214.246053             167.164050              143.049900              135.412559             164.805844              140.529768              127.435641             154.780711              132.836138              174.805262             146.918330              126.928055                4.920000                    NaN                     NaN                6.460000                    NaN                     NaN                7.240000                    NaN                     NaN                7.250000                    NaN                     NaN                0.593333                    NaN                     NaN                0.516667                    NaN                     NaN                0.520000                    NaN                     NaN                0.543333                    NaN                     NaN
+75%              5.526667           6.088465            6.202136            6.763333           7.519142            7.612881            7.693333           8.098977            8.245259            8.163333           8.711520            8.900375              274.562476             275.448955              271.346440              234.140064             275.915531              272.066555              214.806805             277.126938              273.815793              275.520015             278.292540              275.564200                7.980000                    NaN                     NaN                8.750000                    NaN                     NaN                9.530000                    NaN                     NaN               10.310000                    NaN                     NaN                0.953333                    NaN                     NaN                0.786667                    NaN                     NaN                0.786667                    NaN                     NaN                0.800000                    NaN                     NaN
+max             16.540000          19.567469           19.324902           18.070000          22.103884           21.926680           21.413333          22.620106           22.170855           21.490000          23.136332           22.417250              359.551506             359.897160              359.947630              359.950542             359.949668              359.969424              359.897756             359.981651              359.927660              359.794908             359.965200              359.899100               22.510000                    NaN                     NaN               22.500000                    NaN                     NaN               27.130000                    NaN                     NaN               27.160000                    NaN                     NaN                3.716667                    NaN                     NaN                3.073333                    NaN                     NaN                3.030000                    NaN                     NaN                2.676667                    NaN                     NaN

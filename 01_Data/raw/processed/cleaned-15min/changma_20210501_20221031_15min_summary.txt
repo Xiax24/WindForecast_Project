@@ -1,0 +1,44 @@
+昌马测风塔数据处理摘要
+==================================================
+
+处理时间: 2025-05-20 14:58:40
+数据形状: (52608, 24)
+时间范围: 2021-05-01 00:00:00 到 2022-10-31 23:45:00
+数据期间: 548 天
+
+变量列表:
+  wind_speed_10m: 52542 有效值 (99.9%)
+  wind_direction_10m: 52556 有效值 (99.9%)
+  temperature_10m: 52556 有效值 (99.9%)
+  humidity_10m: 52556 有效值 (99.9%)
+  pressure_10m: 0 有效值 (0.0%)
+  density_10m: 52556 有效值 (99.9%)
+  wind_speed_30m: 52556 有效值 (99.9%)
+  wind_direction_30m: 52556 有效值 (99.9%)
+  temperature_30m: 0 有效值 (0.0%)
+  humidity_30m: 0 有效值 (0.0%)
+  pressure_30m: 0 有效值 (0.0%)
+  density_30m: 0 有效值 (0.0%)
+  wind_speed_50m: 52556 有效值 (99.9%)
+  wind_direction_50m: 52556 有效值 (99.9%)
+  temperature_50m: 0 有效值 (0.0%)
+  humidity_50m: 0 有效值 (0.0%)
+  pressure_50m: 0 有效值 (0.0%)
+  density_50m: 0 有效值 (0.0%)
+  wind_speed_70m: 52558 有效值 (99.9%)
+  wind_direction_70m: 52556 有效值 (99.9%)
+  temperature_70m: 0 有效值 (0.0%)
+  humidity_70m: 0 有效值 (0.0%)
+  pressure_70m: 0 有效值 (0.0%)
+  density_70m: 0 有效值 (0.0%)
+
+基本统计:
+       wind_speed_10m  wind_direction_10m  temperature_10m  humidity_10m  pressure_10m   density_10m  wind_speed_30m  wind_direction_30m  temperature_30m  humidity_30m  pressure_30m  density_30m  wind_speed_50m  wind_direction_50m  temperature_50m  humidity_50m  pressure_50m  density_50m  wind_speed_70m  wind_direction_70m  temperature_70m  humidity_70m  pressure_70m  density_70m
+count    52542.000000        52556.000000     52556.000000  52556.000000           0.0  52556.000000    52556.000000        52556.000000              0.0           0.0           0.0          0.0    52556.000000        52556.000000              0.0           0.0           0.0          0.0    52558.000000        52556.000000              0.0           0.0           0.0          0.0
+mean         5.591124          182.069856        14.202226     32.013579           NaN      0.427070        6.400355          130.001338              NaN           NaN           NaN          NaN        6.604751          168.013869              NaN           NaN           NaN          NaN        6.749358          174.379901              NaN           NaN           NaN          NaN
+std          2.735669          130.175750        11.955494     16.850230           NaN      0.430608        2.724739           64.088751              NaN           NaN           NaN          NaN        3.064150           86.995179              NaN           NaN           NaN          NaN        3.173659           89.238067              NaN           NaN           NaN          NaN
+min          0.000000            0.000000       -18.280000      2.270000           NaN      0.090000        0.000000            0.090000              NaN           NaN           NaN          NaN        0.000000            0.000000              NaN           NaN           NaN          NaN        0.000000            0.190000              NaN           NaN           NaN          NaN
+25%          3.610000           71.720000         5.400000     19.830000           NaN      0.100000        4.420000           86.605000              NaN           NaN           NaN          NaN        4.280000           85.720000              NaN           NaN           NaN          NaN        4.420000           89.980000              NaN           NaN           NaN          NaN
+50%          5.220000          191.480000        17.190000     28.895000           NaN      0.110000        6.080000          108.480000              NaN           NaN           NaN          NaN        6.270000          145.610000              NaN           NaN           NaN          NaN        6.420000          151.355000              NaN           NaN           NaN          NaN
+75%          7.180000          301.880000        23.860000     40.000000           NaN      0.980000        7.960000          175.290000              NaN           NaN           NaN          NaN        8.510000          256.602500              NaN           NaN           NaN          NaN        8.730000          265.250000              NaN           NaN           NaN          NaN
+max         21.250000          359.000000        36.820000     99.640000           NaN      1.150000       23.270000          358.990000              NaN           NaN           NaN          NaN       24.120000          347.890000              NaN           NaN           NaN          NaN       25.370000          358.890000              NaN           NaN           NaN          NaN

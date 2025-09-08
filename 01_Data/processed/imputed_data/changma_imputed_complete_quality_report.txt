@@ -1,0 +1,40 @@
+=== 数据完整性报告 ===
+数据形状: (52317, 35)
+时间范围: 2021-05-01 00:00:00 到 2022-10-31 23:45:00
+数据期间: 548 天
+
+变量完整性:
+  obs_wind_speed_10m: 100.0%
+  ec_wind_speed_10m: 100.0%
+  gfs_wind_speed_10m: 100.0%
+  obs_wind_speed_30m: 100.0%
+  ec_wind_speed_30m: 100.0%
+  gfs_wind_speed_30m: 100.0%
+  obs_wind_speed_50m: 100.0%
+  ec_wind_speed_50m: 100.0%
+  gfs_wind_speed_50m: 100.0%
+  obs_wind_speed_70m: 100.0%
+  ec_wind_speed_70m: 100.0%
+  gfs_wind_speed_70m: 100.0%
+  obs_wind_direction_10m: 100.0%
+  ec_wind_direction_10m: 100.0%
+  gfs_wind_direction_10m: 100.0%
+  obs_wind_direction_30m: 100.0%
+  ec_wind_direction_30m: 100.0%
+  gfs_wind_direction_30m: 100.0%
+  obs_wind_direction_50m: 100.0%
+  ec_wind_direction_50m: 100.0%
+  gfs_wind_direction_50m: 100.0%
+  obs_wind_direction_70m: 100.0%
+  ec_wind_direction_70m: 100.0%
+  gfs_wind_direction_70m: 100.0%
+  obs_temperature_10m: 100.0%
+  ec_temperature_10m: 100.0%
+  gfs_temperature_10m: 100.0%
+  obs_humidity_10m: 100.0%
+  ec_humidity_10m: 0.0%
+  gfs_humidity_10m: 0.0%
+  obs_density_10m: 100.0%
+  ec_density_10m: 100.0%
+  gfs_density_10m: 100.0%
+  power: 100.0%

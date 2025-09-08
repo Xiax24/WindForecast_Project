@@ -16,7 +16,7 @@ class NWPDistributionPlots:
         self.save_path = evaluator.save_path
         
     def plot_data_distribution(self):
-        """绘制数据分布概览"""
+        """绘制数据分布概览的"""
         print("📊 绘制数据分布概览...")
         
         if self.data is None:

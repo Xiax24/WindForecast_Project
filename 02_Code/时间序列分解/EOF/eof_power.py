@@ -9,7 +9,7 @@ warnings.filterwarnings('ignore')
 
 # Set paths
 data_path = '/Users/xiaxin/work/WindForecast_Project/01_Data/processed/imputed_data/changma_clean.csv'
-results_path = '/Users/xiaxin/work/WindForecast_Project/03_Results/08时间序列分解/EOF'
+results_path = '/Users/xiaxin/work/WindForecast_Project/03_Results/figures/3.1results'
 
 # Create results directory if it doesn't exist
 os.makedirs(results_path, exist_ok=True)

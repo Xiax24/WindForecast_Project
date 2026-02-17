@@ -1,6 +1,3 @@
-Joint_EOF_Mode,Correlation_with_Power,P_Value,Significance
-1,0.7873986525334904,0.0,Significant
-2,0.05815407710039827,1.9587506287973457e-40,Significant
-3,-0.17386934228888098,0.0,Significant
-4,0.09782467864323949,2.0693327494750244e-111,Significant
-5,-0.005122035782650001,0.2413824669196201,Not Significant
+version https://git-lfs.github.com/spec/v1
+oid sha256:2e789c67125129f0083d29d6c2e94f5c76e23ff47ddd6351a7cb8d56fa03282e
+size 309

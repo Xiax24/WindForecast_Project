@@ -1,0 +1,75 @@
+{
+  "overall_rmse": 31.096599073943704,
+  "overall_correlation": 0.6752486736242903,
+  "valid_predictions": 10463,
+  "total_test_samples": 10463,
+  "category_results": {
+    "east": {
+      "rmse": 33.23517576382092,
+      "correlation": 0.6787155889500669,
+      "sample_count": 21203,
+      "test_count": 5443,
+      "correction_stats": {
+        "gfs_10m": {
+          "rmse": 1.553396337341234,
+          "correlation": 0.8324823856455987
+        },
+        "ec_10m": {
+          "rmse": 1.6329663873200662,
+          "correlation": 0.813808926110831
+        },
+        "gfs_30m": {
+          "rmse": 1.6507078104829653,
+          "correlation": 0.8180935397084356
+        },
+        "ec_30m": {
+          "rmse": 1.7378667709247166,
+          "correlation": 0.8007027022227154
+        }
+      },
+      "description": "东风情况：10m + 30m风速 + 10m温度"
+    },
+    "west": {
+      "rmse": 31.978751247768425,
+      "correlation": 0.6341775754745643,
+      "sample_count": 19883,
+      "test_count": 2505,
+      "correction_stats": {
+        "gfs_10m": {
+          "rmse": 2.1558779676189013,
+          "correlation": 0.6937249131476734
+        },
+        "ec_10m": {
+          "rmse": 1.960231573754678,
+          "correlation": 0.7361750590818245
+        },
+        "gfs_70m": {
+          "rmse": 2.251489819676039,
+          "correlation": 0.7521099792930092
+        },
+        "ec_70m": {
+          "rmse": 2.1696895032075036,
+          "correlation": 0.7720149244295075
+        }
+      },
+      "description": "西风情况：10m + 70m风速 + 10m温度"
+    },
+    "other": {
+      "rmse": 24.775560261733112,
+      "correlation": 0.41593791844807165,
+      "sample_count": 11231,
+      "test_count": 2515,
+      "correction_stats": {
+        "gfs_10m": {
+          "rmse": 1.654956824953973,
+          "correlation": 0.5290949312677199
+        },
+        "ec_10m": {
+          "rmse": 1.663463412365905,
+          "correlation": 0.5304005178560266
+        }
+      },
+      "description": "其他情况：仅10m风速"
+    }
+  }
+}

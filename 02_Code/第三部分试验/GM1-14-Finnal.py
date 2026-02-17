@@ -1358,8 +1358,8 @@ def create_enhanced_summary(all_results, base_save_dir):
 if __name__ == "__main__":
     # 配置路径
     DATA_PATH = "/Users/xiaxin/work/WindForecast_Project/01_Data/processed/imputed_data/changma_imputed_complete.csv"
-    BASE_SAVE_DIR = "/Users/xiaxin/work/WindForecast_Project/03_Results/simplified_enhanced_experiments"
-    INDICES_PATH = "/Users/xiaxin/work/WindForecast_Project/03_Results/third_part_experiments/train_test_split.json"
+    BASE_SAVE_DIR = "/Users/xiaxin/work/WindForecast_Project/03_Results/建模试验/simplified_enhanced_experiments"
+    INDICES_PATH = "/Users/xiaxin/work/WindForecast_Project/03_Results/建模试验/third_part_experiments/train_test_split.json"
     
     # 运行简化命名版增强试验系统
     results = run_enhanced_experiments(DATA_PATH, BASE_SAVE_DIR, INDICES_PATH)

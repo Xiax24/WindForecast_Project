@@ -1,5 +1,3 @@
-variable,season,EC_RMSE,GFS_RMSE,unit,var_type
-Temperature 10m,Spring,2.6544086548597132,2.728593720230614,°C,Temperature
-Temperature 10m,Summer,2.745966467403804,2.747188130884222,°C,Temperature
-Temperature 10m,Autumn,2.9578089259895712,2.606226257689686,°C,Temperature
-Temperature 10m,Winter,2.467415391910558,2.7357381267472385,°C,Temperature
+version https://git-lfs.github.com/spec/v1
+oid sha256:5a8772141625b98e4a75d206547be3c1faa27e45bc7e027a05d08ab5715d7705
+size 350

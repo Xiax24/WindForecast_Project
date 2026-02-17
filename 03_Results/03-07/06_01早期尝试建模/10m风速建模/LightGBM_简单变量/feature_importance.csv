@@ -1,6 +1,3 @@
-feature,importance
-ec_gfs_mean,1.0902240796628446
-hour_sin,0.22131809587801748
-ec_wind_speed_10m,0.09320667908792886
-day_sin,0.08556680066953931
-gfs_wind_speed_10m,0.02995258678515622
+version https://git-lfs.github.com/spec/v1
+oid sha256:2a4b312c338e8290dcdcdc0866106b23ca7ff441c1b3ee2f8fedb86143a6bbb3
+size 184

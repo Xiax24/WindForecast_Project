@@ -1,0 +1,36 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <!-- 塔架 -->
+  <rect x="15" y="30" width="3" height="30" fill="#d4d4d8" stroke="#71717a" stroke-width="0.5"/>
+  
+  <!-- 基座 -->
+  <rect x="12" y="58" width="9" height="4" rx="1" fill="#52525b"/>
+  
+  <!-- 机舱主体 -->
+  <ellipse cx="23" cy="32" rx="7" ry="2.5" fill="#f4f4f5" stroke="#71717a" stroke-width="0.5"/>
+  
+  <!-- 机舱前端（面向右边） -->
+  <ellipse cx="29" cy="32" rx="2" ry="1.5" fill="#e5e7eb" stroke="#71717a" stroke-width="0.5"/>
+  
+  <!-- 叶片转轴中心 -->
+  <circle cx="31" cy="32" r="1.2" fill="#71717a"/>
+  
+  <!-- 叶片1 (向上) - 细长桨叶 -->
+  <path d="M31 32 Q29 22 30 12 Q32 10 34 12 Q33 22 31 32" fill="#f0f0f0" stroke="#9ca3af" stroke-width="0.5"/>
+  
+  <!-- 叶片2 (向右下120度) -->
+  <g transform="rotate(120 31 32)">
+    <path d="M31 32 Q29 22 30 12 Q32 10 34 12 Q33 22 31 32" fill="#e5e7eb" stroke="#9ca3af" stroke-width="0.5"/>
+  </g>
+  
+  <!-- 叶片3 (向左下240度) -->
+  <g transform="rotate(240 31 32)">
+    <path d="M31 32 Q29 22 30 12 Q32 10 34 12 Q33 22 31 32" fill="#d1d5db" stroke="#9ca3af" stroke-width="0.5"/>
+  </g>
+  
+  <!-- 机舱细节 -->
+  <rect x="21" y="30.5" width="6" height="0.5" fill="#d4d4d8"/>
+  <rect x="21" y="33" width="6" height="0.5" fill="#d4d4d8"/>
+  
+  <!-- 维护舱门 -->
+  <rect x="22" y="31" width="1.5" height="2" rx="0.2" fill="#9ca3af" stroke="#71717a" stroke-width="0.3"/>
+</svg>

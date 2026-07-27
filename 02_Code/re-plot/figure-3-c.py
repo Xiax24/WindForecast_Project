@@ -16,9 +16,12 @@ import matplotlib.pyplot as plt
 import lightgbm as lgb
 import shap
 import warnings
+import re
 from pathlib import Path
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score, mean_squared_error
+from qc_common import (qc_operating_range, sector_mask,
+                       SECTOR_FREE, SECTOR_WAKE, WD_BAD_COLS, report_sectors)
 
 warnings.filterwarnings('ignore')
 
@@ -40,17 +43,12 @@ class Figure3cAllFeaturesSectorTestAnalyzer:
         self.output_dir.mkdir(parents=True, exist_ok=True)
         
         # 风向列定义
-        self.wind_dir_columns = ['obs_wind_direction_10m', 'obs_wind_direction_30m', 
-                                 'obs_wind_direction_50m', 'obs_wind_direction_70m']
+        self.wind_dir_columns = ['obs_wind_direction_70m']
+        # self.wind_dir_columns = ['obs_wind_direction_10m', 'obs_wind_direction_30m',
+        #                          'obs_wind_direction_50m', 'obs_wind_direction_70m']
+        # self.wind_dir_columns = ['obs_wind_direction_10m', 'obs_wind_direction_30m', 
+        #                          'obs_wind_direction_50m', 'obs_wind_direction_70m']
 
-    def strict_direction_mask(self, data, direction_range):
-        """严格风向筛选逻辑"""
-        min_deg, max_deg = direction_range
-        mask = np.ones(len(data), dtype=bool)
-        for col in self.wind_dir_columns:
-            wd = data[col].values
-            mask = mask & (wd >= min_deg) & (wd <= max_deg) & ~np.isnan(wd)
-        return mask
 
     def prepare_features(self, df):
         """
@@ -64,7 +62,12 @@ class Figure3cAllFeaturesSectorTestAnalyzer:
         obs_columns = [col for col in obs_columns if 'density' not in col and 'humidity' not in col]
         # 排除datetime和power
         feature_columns = [col for col in obs_columns if col not in ['datetime', 'power']]
-        
+        # 10 m vane: quantised to 16 bins + ~30% pinned at 0/359 deg.
+        # 30 m vane: +12.2 deg offset, 2021-11 failure.  50 m vane: -6.5 deg offset.
+        # Only the 70 m vane is retained, matching the operational WDA sectoring.
+        feature_columns = [c for c in feature_columns if c not in WD_BAD_COLS]
+
+
         # 处理风向变量为sin/cos分量
         df_processed = df.copy()
         wind_dir_cols = [col for col in feature_columns if 'wind_direction' in col]
@@ -89,53 +92,61 @@ class Figure3cAllFeaturesSectorTestAnalyzer:
         
         return df_processed, feature_columns
 
+    # def create_display_name(self, feature_name):
+    #     """将特征名转换为显示名称"""
+    #     name = feature_name.replace('obs_', '').replace('_', ' ').title()
+    #     # 简化显示
+    #     name = name.replace('Wind Speed', 'WS')
+    #     name = name.replace('Temperature', 'Temp')
+    #     name = name.replace('Pressure', 'Press')
+    #     name = name.replace('Wind Dir Sin', 'WD Sin')
+    #     name = name.replace('Wind Dir Cos', 'WD Cos')
+    #     return name
+
     def create_display_name(self, feature_name):
-        """将特征名转换为显示名称"""
         name = feature_name.replace('obs_', '').replace('_', ' ').title()
-        # 简化显示
         name = name.replace('Wind Speed', 'WS')
         name = name.replace('Temperature', 'Temp')
         name = name.replace('Pressure', 'Press')
         name = name.replace('Wind Dir Sin', 'WD Sin')
         name = name.replace('Wind Dir Cos', 'WD Cos')
+        # 修复 .title() 将高度单位 m 大写的问题
+        name = re.sub(r'(\d+)M\b', r'\1m', name)
         return name
 
+
     def train_sector_specific_test_only(self):
-        """
-        扇区独立训练 + 所有特征 + 仅测试集SHAP
-        """
+        """扇区独立训练 + 仅测试集SHAP（70 m 单高度定扇区）"""
         # 载入数据
         df = pd.read_csv(self.data_path)
-        df = df[df['power'] >= 0].dropna(subset=self.wind_dir_columns + ['power'])
-        df = df[(df['obs_wind_speed_70m'] >= 3.0) & (df['obs_wind_speed_70m'] <= 25.0)]
-        
+
+        # QC：power>=0 / dropna / 剔除僵值 / 70m 3-25 m/s
+        df = qc_operating_range(df).dropna(subset=self.wind_dir_columns)
+
         print(f"✓ 总数据量: {len(df)} 条\n")
-        
-        # 按扇区划分
-        mask_free = self.strict_direction_mask(df, (225, 315))
-        mask_wake = self.strict_direction_mask(df, (45, 135))
-        
+
+        # 按扇区划分（仅用 70 m 风向）
+        mask_free = sector_mask(df, SECTOR_FREE)
+        mask_wake = sector_mask(df, SECTOR_WAKE)
+        report_sectors(df, 'SHAP')
+
         df_free = df[mask_free].copy()
         df_wake = df[mask_wake].copy()
-        
+
         print(f"✓ Free-flow 扇区: {len(df_free)} 条")
         print(f"✓ Wake 扇区: {len(df_wake)} 条\n")
-        
-        # 分别处理
+
         print("=" * 60)
         print("处理 Free-flow 扇区 (所有特征 + 仅测试集SHAP)...")
         print("=" * 60)
         results_free = self._process_sector_test_only(df_free, "Free-flow")
-        
+
         print("\n" + "=" * 60)
         print("处理 Wake 扇区 (所有特征 + 仅测试集SHAP)...")
         print("=" * 60)
         results_wake = self._process_sector_test_only(df_wake, "Wake")
-        
-        return {
-            'free': results_free,
-            'wake': results_wake
-        }
+
+        return {'free': results_free, 'wake': results_wake}
 
     def _process_sector_test_only(self, df_sector, sector_name):
         """
@@ -194,6 +205,13 @@ class Figure3cAllFeaturesSectorTestAnalyzer:
         shap_values_test = explainer.shap_values(X_test)
         print(f"  ✓ SHAP 计算完成")
         
+        imp = np.abs(shap_values_test).mean(0)
+        order = np.argsort(imp)[::-1]
+        print(f"\n  --- {sector_name} mean|SHAP| ranking ---")
+        for k in order[:12]:
+            print(f"    {feature_columns[k]:35s} {imp[k]:8.3f}")
+
+
         return {
             'shap_values': shap_values_test,
             'X': X_test.values,
@@ -219,7 +237,7 @@ class Figure3cAllFeaturesSectorTestAnalyzer:
         
         # 创建显示名称
         display_names = [self.create_display_name(feature_names[i]) for i in top_indices]
-        
+        rng = np.random.default_rng(42)
         for plot_idx, feat_idx in enumerate(top_indices):
             shap_vals = shap_values[:, feat_idx]
             feature_vals = X_data[:, feat_idx]
@@ -231,8 +249,8 @@ class Figure3cAllFeaturesSectorTestAnalyzer:
                 norm_vals = np.ones_like(feature_vals) * 0.5
             
             # SHAP经典配色
-            y_pos = np.full_like(shap_vals, plot_idx) + np.random.normal(0, 0.08, len(shap_vals))
-            
+            # y_pos = np.full_like(shap_vals, plot_idx) + np.random.normal(0, 0.08, len(shap_vals))
+            y_pos = np.full_like(shap_vals, plot_idx) + rng.normal(0, 0.08, len(shap_vals))
             from matplotlib.colors import LinearSegmentedColormap
             colors_list = ["#1E88E5", "#7E57C2", "#D81B60", "#E91E63", "#F06292"]
             cmap = LinearSegmentedColormap.from_list("shap_classic", colors_list)

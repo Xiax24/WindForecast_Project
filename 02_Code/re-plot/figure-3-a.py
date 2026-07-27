@@ -20,6 +20,7 @@ from sklearn.metrics import mean_squared_error, r2_score
 import lightgbm as lgb
 import warnings
 from pathlib import Path
+from qc_common import qc_operating_range
 
 warnings.filterwarnings('ignore')
 
@@ -115,22 +116,9 @@ class REWSComparisonAnalyzer:
             raise ValueError(f"缺少必要列: {missing_cols}")
         
         # 基础清理
-        # 1. 去除功率为负的数据
-        data_clean = data[data['power'] >= 0].copy()
-        print(f"去除负功率后: {data_clean.shape}")
-        
-        # 2. 去除关键列的缺失值
+        data_clean = qc_operating_range(data)          # >=0 power, no NaN, 3-25 m/s @70m, month exclusion
         data_clean = data_clean.dropna(subset=required_cols)
-        print(f"去除缺失值后: {data_clean.shape}")
-        
-        # 3. 风速筛选：3-25 m/s（基于70m风速）
-        wind_speed_condition = (
-            (data_clean['obs_wind_speed_70m'] >= 3.0) & 
-            (data_clean['obs_wind_speed_70m'] <= 25.0)
-        )
-        data_clean = data_clean[wind_speed_condition].copy()
-        print(f"风速筛选后 (3-25 m/s @ 70m): {data_clean.shape}")
-        
+        print(f"最终样本: {data_clean.shape}")
         # 数据统计
         print(f"\n数据统计:")
         print(f"  功率范围: {data_clean['power'].min():.1f} - {data_clean['power'].max():.1f} MW")

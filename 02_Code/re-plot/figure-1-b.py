@@ -1,9 +1,6 @@
 #!/usr/bin/env python3
 """
-顶刊级别风速廓线
-- 展示所有样本廓线（透明）
-- 叠加平均廓线（加粗）
-- 第三张子图叠加西风线条用于对比
+Author: Xiaxin
 """
 
 import pandas as pd
@@ -11,7 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
-# Nature/Science 子刊标准配置
+
 plt.rcParams.update({
     'font.family': 'Arial',
     'font.size': 11,
@@ -144,21 +141,6 @@ def plot_elegant_profiles(csv_file, heights, output_path):
     for i, h in enumerate(heights):
         print(f"  {h:2d}m  {mean_all[i]:5.2f}  {mean_west[i]:5.2f}  {mean_east[i]:5.2f}")
     
-    # 配色
-    # colors = {
-    #     'all': {
-    #         'light': "#686767",
-    #         'dark': '#2d2d2d',
-    #     },
-    #     'east': {
-    #         'light': "#74b0e8",
-    #         'dark': "#1c68a9",
-    #     },
-    #     'west': {
-    #         'light': "#F45F31",
-    #         'dark': "#E83E0B",
-    #     }
-    # }
     colors = {
         'all': {
             'light': "#686767",      # 浅灰（透明廓线）
@@ -214,22 +196,6 @@ def plot_elegant_profiles(csv_file, heights, output_path):
     from matplotlib.patches import Patch
     from matplotlib.lines import Line2D
     
-    # legend_elements_overall = [
-    #     Line2D([0], [0], color=colors['all']['dark'], linewidth=3, 
-    #         marker='o', markersize=8, markerfacecolor='white',
-    #         markeredgecolor=colors['all']['dark'], markeredgewidth=1.5,
-    #         label=f'Overall Mean'),
-    #     Patch(facecolor=colors['all']['dark'], alpha=0.15, 
-    #         label='Overall ± 1σ'),
-    #     Line2D([0], [0], color=colors['all']['light'], linewidth=0.8, 
-    #         alpha=0.3, label='Overall profiles')
-    # ]
-    # legend_elements_overall = [
-    # Line2D([0], [0], color='black', linewidth=3, 
-    #        marker='o', markersize=8, markerfacecolor='white',
-    #        markeredgecolor='black', markeredgewidth=1.5,
-    #        label='All Data')  # 简单明了，代表整个黑色系
-    # ]
     legend_overall = [
         Line2D([0], [0], color='black', linewidth=3, 
             marker='o', markersize=8, markerfacecolor='white',
@@ -303,46 +269,9 @@ def plot_elegant_profiles(csv_file, heights, output_path):
     ax.set_title('Free-stream vs. Wake Regime', fontweight='bold', pad=10, fontsize=18)
     ax.grid(True, linestyle='dotted', alpha=0.5, linewidth=0.8, color='gray')
     ax.set_ylabel('Height (m)', fontweight='bold', fontsize=16)
-    # 保存图例元素（不显示，稍后统一显示在右侧）
-    # legend_elements_easterly = [
-    #     Line2D([0], [0], color=colors['east']['dark'], linewidth=3, 
-    #            marker='o', markersize=8, markerfacecolor='white',
-    #            markeredgecolor=colors['east']['dark'], markeredgewidth=1.5,
-    #            label=f'Wake (Easterly) Mean'),
-    #     Patch(facecolor=colors['east']['dark'], alpha=0.15, 
-    #           label='Wake ± 1σ'),
-    #     Line2D([0], [0], color=colors['east']['light'], linewidth=0.8, 
-    #            alpha=0.3, label='Wake profiles'),
-    #     Line2D([0], [0], color=colors['west']['dark'], linewidth=3, 
-    #            marker='o', markersize=8, markerfacecolor='white',
-    #            markeredgecolor=colors['west']['dark'], markeredgewidth=1.5,
-    #            label=f'Free-stream (Westerly) Mean'),
-    #     Patch(facecolor=colors['west']['dark'], alpha=0.12, 
-    #           label='Free-stream ± 1σ'),
-    #     Line2D([0], [0], color=colors['west']['light'], linewidth=0.8, 
-    #            alpha=0.3, label='Free-stream profiles')
-    # ]
-    # legend_elements_comparison = [
-    # # Free-stream (Westerly)
-    # Line2D([0], [0], color=colors['west']['dark'], linewidth=3, 
-    #        marker='o', markersize=8, markerfacecolor='white',
-    #        markeredgecolor=colors['west']['dark'], markeredgewidth=1.5,
-    #        label='Free-stream (Westerly)'),
-           
-    # # Wake (Easterly)
-    # Line2D([0], [0], color=colors['east']['dark'], linewidth=3, 
-    #        marker='o', markersize=8, markerfacecolor='white',
-    #        markeredgecolor=colors['east']['dark'], markeredgewidth=1.5,
-    #        label='Wake (Easterly)')
-    # ]
+
     legend_compare = [
-        # # Free-stream (Westerly)
-        # Line2D([0], [0], color=colors['west']['dark'], linewidth=3, 
-        #     marker='o', markersize=8, markerfacecolor='white',
-        #     markeredgecolor=colors['west']['dark'], markeredgewidth=1.5,
-        #     label='Free-stream (Westerly)'),
-            
-        # Wake (Easterly)
+        
         Line2D([0], [0], color=colors['east']['dark'], linewidth=3, 
             marker='o', markersize=8, markerfacecolor='white',
             markeredgecolor=colors['east']['dark'], markeredgewidth=1.5,

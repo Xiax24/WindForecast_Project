@@ -1,7 +1,19 @@
 #!/usr/bin/env python3
 """
 风速-功率Spearman相关性热图
-参考原有代码的风格和配色
+
+【已废弃 —— 不要再用这个脚本出图】
+两个原因：
+  1. 数据口径过时：这里的 strict_direction_mask 要求 10/30/50/70 四个高度同时
+     落在扇区内，该判据被风向标缺陷主导（10m 量化为 16 档、30m +12.2° 偏置、
+     50m -6.5° 偏置），只剩约 20% 样本且两扇区日间比例失衡。正文其余部分已
+     统一换成 70m 单高度判据（见 qc_common.sector_mask）。
+  2. 坐标轴不清（R2 Point 9）：两轴都只写 Power/70m/50m/30m/10m，没区分 U 还是 P，
+     还留着两条被 mask 成空白的边（纵轴 Power 行、横轴 10m 列）。
+
+替代：figure-1-c_fixed.py 里的 heatmaps()，输出同名文件
+      03_Results/re-plot-figures/figure-1/windspeed_power_correlation_heatmap_all.png
+      并附一版 Pearson 对照图。
 """
 
 import pandas as pd

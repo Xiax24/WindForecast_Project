@@ -19,6 +19,10 @@ from scipy import stats
 import lightgbm as lgb
 import warnings
 from pathlib import Path
+# 'reduced' = 10/70 m + T  (new SHAP: 30/50 m contribute <10% of 10/70 m)
+# 'full'    = 10/30/50/70 m + T  (same inputs as ER -> isolates the sectoring effect)
+WDA_MODE = 'manuscript'
+
 
 warnings.filterwarnings('ignore')
 
@@ -36,27 +40,66 @@ plt.rcParams.update({
 # ============================================================================
 # DM检验
 # ============================================================================
-def diebold_mariano_test(errors1, errors2, h=1):
-    """Diebold-Mariano检验"""
-    d = errors1**2 - errors2**2
-    mean_d = np.mean(d)
+# def diebold_mariano_test(errors1, errors2, h=1):
+#     """Diebold-Mariano检验"""
+#     d = errors1**2 - errors2**2
+#     mean_d = np.mean(d)
     
-    def autocovariance(series, lag):
-        n = len(series)
-        mean = np.mean(series)
-        return np.sum((series[:n-lag] - mean) * (series[lag:] - mean)) / n
+#     def autocovariance(series, lag):
+#         n = len(series)
+#         mean = np.mean(series)
+#         return np.sum((series[:n-lag] - mean) * (series[lag:] - mean)) / n
     
-    gamma_0 = autocovariance(d, 0)
-    variance = gamma_0
-    for lag in range(1, h):
-        gamma_lag = autocovariance(d, lag)
-        variance += 2 * (1 - lag/(h+1)) * gamma_lag
+#     gamma_0 = autocovariance(d, 0)
+#     variance = gamma_0
+#     for lag in range(1, h):
+#         gamma_lag = autocovariance(d, lag)
+#         variance += 2 * (1 - lag/(h+1)) * gamma_lag
     
-    dm_stat = mean_d / np.sqrt(variance / len(d))
-    p_value = 1 - stats.norm.cdf(dm_stat)
+#     dm_stat = mean_d / np.sqrt(variance / len(d))
+#     # p_value = 1 - stats.norm.cdf(dm_stat)
+#     p_value = 2 * (1 - stats.norm.cdf(abs(dm_stat)))
     
-    return dm_stat, p_value
+#     return dm_stat, p_value
+def diebold_mariano_test(errors1, errors2):
+    """Diebold-Mariano test on squared errors.
 
+    Variance of the loss differential: Bartlett-kernel HAC with
+    Newey-West (1994) automatic lag selection.
+    Small-sample: Harvey-Leybourne-Newbold correction.
+    p-value: two-sided, t distribution with n-1 dof.
+    """
+    d = np.asarray(errors1, dtype=float) ** 2 - np.asarray(errors2, dtype=float) ** 2
+    d = d[~np.isnan(d)]
+    n = len(d)
+    if n < 10:
+        return np.nan, np.nan
+
+    mean_d = d.mean()
+    dc = d - mean_d
+
+    # Newey-West automatic bandwidth (rule of thumb)
+    L = int(np.floor(4.0 * (n / 100.0) ** (2.0 / 9.0)))
+    L = max(L, 0)
+
+    gamma0 = np.dot(dc, dc) / n
+    var = gamma0
+    for lag in range(1, L + 1):
+        gamma = np.dot(dc[:-lag], dc[lag:]) / n
+        var += 2.0 * (1.0 - lag / (L + 1.0)) * gamma  # Bartlett weights
+    var = max(var, 1e-12)  # guard against non-positive HAC variance
+
+    dm = mean_d / np.sqrt(var / n)
+
+    # Harvey-Leybourne-Newbold correction; horizon h = L + 1 aligns the
+    # correction with the HAC bandwidth (same-timestamp setting, no true
+    # forecast horizon; autocorrelation stems from persistence of WRF error).
+    h = L + 1
+    hln = np.sqrt((n + 1 - 2 * h + h * (h - 1) / n) / n)
+    dm_hln = dm * hln
+
+    p_value = 2.0 * (1.0 - stats.t.cdf(abs(dm_hln), df=n - 1))
+    return dm_hln, p_value
 
 # ============================================================================
 # 主类：四种策略对比
@@ -104,36 +147,25 @@ class FourStrategyComparison:
                 # 为了与WDA策略保持公平比较，加入Temp 10m
                 'other_features': [f'{nwp_source}_temperature_10m']
             },
+            'ER_CAP': {
+                'name': 'ER(300 trees)',
+                'wind_features': [
+                    f'{nwp_source}_wind_speed_10m',
+                    f'{nwp_source}_wind_speed_30m',
+                    f'{nwp_source}_wind_speed_50m',
+                    f'{nwp_source}_wind_speed_70m'
+                ],
+                'other_features': [f'{nwp_source}_temperature_10m'],
+                'n_estimators': 300,          # capacity control for R2 Point 16:
+                                              # WDA trains 3 sector models -> 3x tunable
+                                              # parameters. If a single global ER model
+                                              # with 3x trees does NOT close the gap,
+                                              # the WDA gain is structural, not capacity.
+            },
             'WDA': {
                 'name': 'WDA',
                 'type': 'adaptive',  # 标记为自适应策略
-                'models': {
-                    'free': {
-                        'wind_features': [
-                            f'{nwp_source}_wind_speed_10m',
-                            f'{nwp_source}_wind_speed_50m',
-                            f'{nwp_source}_wind_speed_70m'
-                        ],
-                        'other_features': [f'{nwp_source}_temperature_10m']
-                    },
-                    'wake': {
-                        'wind_features': [
-                            f'{nwp_source}_wind_speed_10m',
-                            f'{nwp_source}_wind_speed_30m',
-                            f'{nwp_source}_wind_speed_70m'
-                        ],
-                        'other_features': [f'{nwp_source}_temperature_10m']
-                    },
-                    'others': {
-                        'wind_features': [
-                            f'{nwp_source}_wind_speed_10m',
-                            f'{nwp_source}_wind_speed_30m',
-                            f'{nwp_source}_wind_speed_50m',
-                            f'{nwp_source}_wind_speed_70m'
-                        ],
-                        'other_features': [f'{nwp_source}_temperature_10m']
-                    }
-                }
+                'models': self._build_wda_models(nwp_source, WDA_MODE)
             }
         }
         
@@ -149,7 +181,43 @@ class FourStrategyComparison:
             'verbose': -1,
             'random_state': 42
         }
-    
+
+    @staticmethod
+    # def _build_wda_models(nwp, mode):      # ← 4 个空格，与 def __init__ 对齐
+    #     ws = lambda h: f'{nwp}_wind_speed_{h}m'
+    #     T = [f'{nwp}_temperature_10m']
+    #     if mode == 'reduced':
+    #         free = wake = [ws(10), ws(70)]
+    #     elif mode == 'full':
+    #         free = wake = [ws(10), ws(30), ws(50), ws(70)]
+    #     else:
+    #         raise ValueError(mode)
+    #     others = [ws(10), ws(30), ws(50), ws(70)]
+    #     return {'free':   {'wind_features': free,   'other_features': T},
+    #             'wake':   {'wind_features': wake,   'other_features': T},
+    #             'others': {'wind_features': others, 'other_features': T}}
+
+    def _build_wda_models(nwp, mode):
+        ws = lambda h: f'{nwp}_wind_speed_{h}m'
+        T = [f'{nwp}_temperature_10m']
+        if mode == 'manuscript':
+            # SHAP-informed sector-specific inputs (frozen main text 2.4):
+            # free: 10/50/70 (SHAP: WS50 > WS30 in free-stream sector)
+            # wake: 10/30/70 (SHAP: WS30 > WS50 in wake sector)
+            free = [ws(10), ws(50), ws(70)]
+            wake = [ws(10), ws(30), ws(70)]
+        elif mode == 'reduced':
+            free = wake = [ws(10), ws(70)]
+        elif mode == 'full':
+            free = wake = [ws(10), ws(30), ws(50), ws(70)]
+        else:
+            raise ValueError(mode)
+        others = [ws(10), ws(30), ws(50), ws(70)]
+        return {'free':   {'wind_features': free,   'other_features': T},
+                'wake':   {'wind_features': wake,   'other_features': T},
+                'others': {'wind_features': others, 'other_features': T}}
+
+
     def classify_wind_direction(self, wind_dir):
         """根据风向分类"""
         # Free-stream: 225-315°
@@ -174,14 +242,18 @@ class FourStrategyComparison:
         
         df = pd.read_csv(self.data_path)
         
-        # 基础清理
+        # # 基础清理
+        # df = df[df['power'] >= 0].copy()
+        # 基础清理（与重建实验口径一致：剔除僵值）
+        from qc_common import remove_flatlines
         df = df[df['power'] >= 0].copy()
+        df = remove_flatlines(df)
         
         # 收集所有策略会用到的列
         required_cols = set()
         
         # HH, SR, ER策略的列
-        for strategy in ['HH', 'SR', 'ER']:
+        for strategy in ['HH', 'SR', 'ER', 'ER_CAP']:
             config = self.strategies[strategy]
             required_cols.update(config['wind_features'])
             required_cols.update(config['other_features'])
@@ -222,6 +294,7 @@ class FourStrategyComparison:
         print(f"清洗后数据量: {len(df)}")
         
         # 80/20划分
+        df = df.sort_values('datetime').reset_index(drop=True)
         train_df, test_df = train_test_split(
             df, test_size=0.2, random_state=42, shuffle=False
         )
@@ -256,7 +329,8 @@ class FourStrategyComparison:
         
         return train_df, test_df
     
-    def two_stage_train(self, train_data, wind_features, other_features):
+    # def two_stage_train(self, train_data, wind_features, other_features):
+    def two_stage_train(self, train_data, wind_features, other_features, n_estimators=None):
         """
         两阶段训练
         阶段1: 每个NWP气象要素 -> 对应的观测气象要素 (逐个订正)
@@ -283,8 +357,11 @@ class FourStrategyComparison:
             # 训练单变量订正模型: NWP -> Obs
             X = train_data[[nwp_feature]].values
             y = train_data[obs_feature].values
-            
-            model = lgb.LGBMRegressor(**self.lgb_params, n_estimators=100)
+            params = dict(self.lgb_params)
+            if n_estimators is not None:
+                params['n_estimators'] = n_estimators
+            model = lgb.LGBMRegressor(**params)
+            # model = lgb.LGBMRegressor(**self.lgb_params, n_estimators=100)
             model.fit(X, y)
             
             correction_models[nwp_feature] = {
@@ -304,8 +381,11 @@ class FourStrategyComparison:
         # 再次检查是否有NaN
         if np.isnan(X_power).any() or np.isnan(y_power).any():
             raise ValueError("功率模型训练数据包含NaN")
-        
-        power_model = lgb.LGBMRegressor(**self.lgb_params, n_estimators=100)
+        params = dict(self.lgb_params)
+        if n_estimators is not None:
+            params['n_estimators'] = n_estimators
+        power_model = lgb.LGBMRegressor(**params)
+        # power_model = lgb.LGBMRegressor(**self.lgb_params, n_estimators=100)
         power_model.fit(X_power, y_power)
         
         return correction_models, power_model
@@ -354,7 +434,7 @@ class FourStrategyComparison:
         
         # 在全部训练集上训练
         correction_models, power_model = self.two_stage_train(
-            self.train_df, wind_features, other_features
+            self.train_df, wind_features, other_features, n_estimators=config.get('n_estimators')
         )
         
         # 在测试集上预测
@@ -484,7 +564,7 @@ class FourStrategyComparison:
         results = {}
         
         # 策略1-3: HH, SR, ER
-        for strategy_name in ['HH', 'SR', 'ER']:
+        for strategy_name in ['HH', 'SR', 'ER', 'ER_CAP']:
             results[strategy_name] = self.train_strategy_hh_sr_er(strategy_name)
         
         # 策略4: WDA
@@ -506,7 +586,7 @@ class FourStrategyComparison:
         print(f"{'策略':<20} {'R²':>10} {'RMSE':>12} {'MAE':>12} {'Corr':>10}")
         print("-"*70)
         
-        for strategy_name in ['HH', 'SR', 'ER', 'WDA']:
+        for strategy_name in ['HH', 'SR', 'ER', 'ER_CAP', 'WDA']:
             result = results[strategy_name]
             strategy_full = self.strategies[strategy_name]['name']
             print(f"{strategy_full:<20} "
@@ -529,7 +609,9 @@ class FourStrategyComparison:
             ('HH', 'SR'),
             ('SR', 'ER'),
             ('ER', 'WDA'),
-            ('HH', 'WDA')
+            ('HH', 'WDA'),
+            ('ER', 'ER_CAP'),
+            ('ER_CAP', 'WDA')
         ]
         
         for strategy1, strategy2 in comparisons:
@@ -692,10 +774,10 @@ class FourStrategyComparison:
             
             # 标签
             if idx >= 2:  # 下面两幅图
-                ax.set_xlabel('Observed Power MW)', fontsize=label_fontsize)
+                ax.set_xlabel('Observed Power (MW)', fontsize=label_fontsize)
             
             if idx % 2 == 0:  # 左边两幅图
-                ax.set_ylabel('Forecasted Power MW)', fontsize=label_fontsize)
+                ax.set_ylabel('Forecasted Power (MW)', fontsize=label_fontsize)
             
             ax.grid(True, alpha=0.3)
             ax.set_aspect('equal', adjustable='box')
